@@ -1,24 +1,33 @@
 <?php
 
-echo "<form mehtod='get'>
-        <label>insert date</label>
-        <input id='wreckDate' type='text'></input>
-        <label>insert name</label>
-        <input id='wreckDate' type='text'></input>
-        <label>insert data</label>
-        <input id='wreckDate' type='text'></input>";
-
 require_once "../db_credentials.php";
-
 $dbc = mysqli_connect(DB_HOST, DB_USER, DB_PW, DB_NAME);
 mysqli_set_charset($dbc, "utf8");
 
-// SQL-Abfrage ausführen, um alle Daten aus der Datenbank abzurufen
-$getData = "SELECT * FROM webap_shipwrecks";
-$result = mysqli_query($dbc, $getData);
+if(isset($_POST["createData"])) {
+    $wreckDate = mysqli_real_escape_string($dbc, $_POST["wreckDate"]);
+    $wreckName = mysqli_real_escape_string($dbc, $_POST["wreckName"]);
+    $country = mysqli_real_escape_string($dbc, $_POST["country"]);
+    $description = mysqli_real_escape_string($dbc, $_POST["description"]);
 
+    // Prepare statement
+    $stmt = mysqli_prepare($dbc, "INSERT INTO webap_shipwrecks (dtWreckageDate, dtShipName, dtCountryName, dtDescription) VALUES (?, ?, ?, ?)");
+    
+    // Bind parameters
+    mysqli_stmt_bind_param($stmt, "ssss", $wreckDate, $wreckName, $country, $description);
+
+    // Execute statement
+    mysqli_stmt_execute($stmt);
+
+    // Check for errors
+    if(mysqli_stmt_error($stmt)) {
+        die(mysqli_stmt_error($stmt));
+    }
+
+    // Close statement
+    mysqli_stmt_close($stmt);
+}
 
 mysqli_close($dbc);
 
 ?>
-        
