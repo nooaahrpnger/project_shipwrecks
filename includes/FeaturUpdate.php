@@ -19,7 +19,7 @@
 
 
     function Update(){
-        $update = "SELEC "
+        $update = "SELEC ";
     }
 
 
