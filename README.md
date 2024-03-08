@@ -15,9 +15,15 @@ The Shipwrecks API provides a comprehensive platform for exploring detailed info
 - Any kind of Database
 
 # Installation
-1. Clone the repository:
+1. Clone the repository
 
-- [GitHub] (https://github.com/nooaahrpnger/project_shipwrecks.git)
+2. Setup Database
+
+3. Import SQL into Database 
+
+4. Change db_connections.php file to match your DB Connection
+
+5. Enjoy!
 
 # Using the API
 
