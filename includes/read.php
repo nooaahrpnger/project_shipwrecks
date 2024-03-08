@@ -1,7 +1,7 @@
 <?php
 
 require_once '../db_credentials.php';
-
+require_once __DIR__ . '/includes/Functions/DB_connection_function.php';
 
 header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Methods: GET");
@@ -9,7 +9,7 @@ header("Access-Control-Allow-Headers: Authorization, Content-Type, Accept");
 header('Content-Type: application/json');
 
 // Connect to the database
-$dbc = mysqli_connect(DB_HOST, DB_USER, DB_PW, DB_NAME);
+
 
 
 
