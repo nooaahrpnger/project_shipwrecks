@@ -10,50 +10,39 @@
     <!-- Login Form -->
     <div id="loginBox">
         <h1>Login</h1>
-        <form id="loginForm" method="post">
-            <label>Username:</label><br>
-            <input type="text" name="INPUT_username" id="username"><br><br>
-            <label>Passwort:</label><br>
-            <input type="password" name="INPUT_password" id="password"><br><br>
-            <button type="submit" id="loginBtn">Login</button><br><br>
+        <form method="post">
+            <label class="blackText">Username:</label><br>
+            <input type="text" name="INPUT_username" ><br><br>
+            <label class="blackText">Passwort:</label><br>
+            <input type="password" name="INPUT_password" id="loginPass"><br>
+            <br><br>
+            <button class="loginB" type='submit' name='BUTTON_login'>Login</button>
+            <br><br>
         </form>
     </div>
     <hr>
     <!-- Sign in Form -->
-    <div id="signIn">
-        <p>Noch keinen Login? Melden Sie sich jetzt an.</p>
-        <button type="button" id="showRegisterForm">Register</button>
-    </div>
-
-    <div id="registerForm" style="display: none;">
-        <form id="registerFormInner" method="post">
-            <input type="text" name="SIGNIN_loginName" placeholder="Login Name..." required><br>
-            <input type="password" name="SIGNIN_password" placeholder="Passwort..." required><br>
-            <input type="text" name="SIGNIN_birthdate" placeholder="Jahr-Monat-Tag..." required><br>
-            <input type="text" name="SIGNIN_country" placeholder="Land..." required><br>              
-            <input type="text" name="SIGNIN_city" placeholder="Stadt..." required><br>
-            <input type="text" name="SIGNIN_address" placeholder="Straße..." required><br>
-            <input type="text" name="SIGNIN_plz" placeholder="PLZ..." required><br>
-            <button type="submit" class="button" name="BUTTON_register">Erstellen</button>
-        </form>
-    </div>
+    
     <script>
-        $(document).ready(function() {
-            $('#loginForm').submit(function(event) {
-                event.preventDefault(); // Formular nicht standardmäßig senden
-                var formData = $(this).serialize();
+        $(document).ready(function(){
+            $('form').submit(function(event) {
+                event.preventDefault(); // Verhindert das Standardverhalten des Formulars (das automatische Absenden)
+
+                var formData = $(this).serialize(); // Daten aus dem Formular serialisieren
+
                 $.ajax({
-                    url: 'includes/login.php',
                     type: 'POST',
+                    url: 'login.php', // Die URL deiner PHP-Seite hier einfügen
                     data: formData,
                     success: function(response) {
-                        console.log(response);
+                        // Erfolgreiche Verarbeitung der Antwort von PHP
+                        console.log(response); // Hier kannst du die Antwort protokollieren oder weitere Aktionen durchführen
+                    },
+                    error: function(xhr, status, error) {
+                        // Fehler bei der AJAX-Anfrage
+                        console.error(error); // Protokollieren des Fehlers
                     }
                 });
-            });
-            // Anzeigen des Registrierungsformulars
-            $('#showRegisterForm').click(function() {
-                $('#registerForm').show();
             });
         });
     </script>
