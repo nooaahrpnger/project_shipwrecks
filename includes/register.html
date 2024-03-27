@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <script src="../js/jquery-3.7.1.js"></script>
+</head>
+<body>
+    <div id="signIn">
+        <p>Noch keinen Login? Melden Sie sich jetzt an.</p>
+        <button type="button" id="showRegisterForm">Register</button>
+    </div>
+
+    <div id="registerForm" style="display: none;">
+        <form id="registerFormInner" method="post">
+            <input type="text"      name="SIGNIN_loginName" placeholder="Login Name"    required><br>
+            <input type="password"  name="SIGNIN_password"  placeholder="Passwort"      required><br>
+            <input type="email"     name="SIGNIN_email"     placeholder="Email"         required><br>
+
+            <button type="submit"   class="registerButton" name="BUTTON_register" id="registerButton">Erstellen</button>
+        </form>
+    </div>
+    <script>
+        $(document).ready(function() 
+        {
+            $('#showRegisterForm').click(function() 
+            {
+                $('#registerForm').show();
+            });
+
+            $("#registerFormInner").submit(function(e) 
+            {
+                e.preventDefault(); 
+
+                var formData = $(this).serialize();
+
+                $.ajax({
+                    url: 'register.php',
+                    type: 'POST',
+                    data: formData,
+                    success: function(response) 
+                    {
+                        console.log('Serverantwort:', response);
+                        
+                    }
+                });
+            });  
+        });
+    </script>
+</body>
+</html>
