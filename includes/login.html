@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    
+</head>
+<body>
+    <!-- Login Form -->
+    <div id="loginBox">
+        <h1>Login</h1>
+        <form id="loginForm" method="post">
+            <label>Username:</label><br>
+            <input type="text" name="INPUT_username" id="username"><br><br>
+            <label>Passwort:</label><br>
+            <input type="password" name="INPUT_password" id="password"><br><br>
+            <button type="submit" id="loginBtn">Login</button><br><br>
+        </form>
+    </div>
+    <hr>
+    <!-- Sign in Form -->
+    <div id="signIn">
+        <p>Noch keinen Login? Melden Sie sich jetzt an.</p>
+        <button type="button" id="showRegisterForm">Register</button>
+    </div>
+
+    <div id="registerForm" style="display: none;">
+        <form id="registerFormInner" method="post">
+            <input type="text" name="SIGNIN_loginName" placeholder="Login Name..." required><br>
+            <input type="password" name="SIGNIN_password" placeholder="Passwort..." required><br>
+            <input type="text" name="SIGNIN_birthdate" placeholder="Jahr-Monat-Tag..." required><br>
+            <input type="text" name="SIGNIN_country" placeholder="Land..." required><br>              
+            <input type="text" name="SIGNIN_city" placeholder="Stadt..." required><br>
+            <input type="text" name="SIGNIN_address" placeholder="Straße..." required><br>
+            <input type="text" name="SIGNIN_plz" placeholder="PLZ..." required><br>
+            <button type="submit" class="button" name="BUTTON_register">Erstellen</button>
+        </form>
+    </div>
+    <script>
+        $(document).ready(function() {
+            $('#loginForm').submit(function(event) {
+                event.preventDefault(); // Formular nicht standardmäßig senden
+                var formData = $(this).serialize();
+                $.ajax({
+                    url: 'includes/login.php',
+                    type: 'POST',
+                    data: formData,
+                    success: function(response) {
+                        console.log(response);
+                    }
+                });
+            });
+            // Anzeigen des Registrierungsformulars
+            $('#showRegisterForm').click(function() {
+                $('#registerForm').show();
+            });
+        });
+    </script>
+</body>
+</html>
