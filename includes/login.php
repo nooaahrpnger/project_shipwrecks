@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 // Verbindung zur Datenbank herstellen
 require_once "../db_credentials.php";
 $dbc = mysqli_connect(DB_HOST, DB_USER, DB_PW, DB_NAME);
@@ -8,6 +10,8 @@ $dbc = mysqli_connect(DB_HOST, DB_USER, DB_PW, DB_NAME);
 // Überprüfen, ob die Verbindung hergestellt werden konnte
 if (!$dbc) {
     die("Verbindung fehlgeschlagen: " . mysqli_connect_error());
+} else {
+    echo "Verbindung zur Datenbank erfolgreich hergestellt.<br>";
 }
 
 // Überprüfen, ob das Formular gesendet wurde
@@ -24,12 +28,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if (mysqli_num_rows($result) == 1) {
             // Benutzer gefunden, Passwort überprüfen
             $row = mysqli_fetch_assoc($result);
-            $hashed_password = $row['password'];
+            $hashed_password = $row['dtPassword'];
 
             // Überprüfen, ob das eingegebene Passwort mit dem gehashten Passwort übereinstimmt
             if (password_verify($_POST['INPUT_password'], $hashed_password)) {
                 // Anmeldung erfolgreich
-                echo "Anmeldung erfolgreich!";
+                $_SESSION["LOGIN_user"] = $_POST["INPUT_username"];
+                echo "Eingeloggt als: " . $_SESSION["LOGIN_user"];
+                
                 // Führe hier weitere Aktionen durch, z.B. Setzen von Sitzungsvariablen oder Weiterleiten zu einer anderen Seite
             } else {
                 // Anmeldung fehlgeschlagen
