@@ -15,6 +15,23 @@
 </head>
 <body style="margin: 0px;">
 
+
+
+    <?php
+        if(isset($_GET['page'])) {
+            $page = $_GET['page'];
+            switch($page) {
+                case 'login':
+                    include_once "includes/login.html";
+                    break;
+                default:
+                    $content = "Index";
+                    break;
+            }
+        } else {
+            echo "Wähle eine Seite aus dem Menü.";
+        }
+    ?>
 </body>
 </html>
 
