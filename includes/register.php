@@ -6,6 +6,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
     $email = $_POST['SIGNIN_email'];
     $accountType = "User";
 
+    // Hash das Passwort
+    $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+
     require_once "../db_credentials.php";
     $conn = mysqli_connect(DB_HOST, DB_USER, DB_PW, DB_NAME);
 
@@ -14,7 +17,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
         die("Connection failed: " . mysqli_connect_error());
     }
 
-    $sql = "INSERT INTO shipwrecks_Users (dtUsername, dtEmail, dtPassword, dtAccountType) VALUES ('$loginName', '$email', '$password', '$accountType')";
+    $sql = "INSERT INTO shipwrecks_Users (dtUsername, dtEmail, dtPassword, dtAccountType) VALUES ('$loginName', '$email', '$hashedPassword', '$accountType')";
 
     if (mysqli_query($conn, $sql)) 
     {
