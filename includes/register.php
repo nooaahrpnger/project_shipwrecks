@@ -4,7 +4,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
     $loginName = $_POST['SIGNIN_loginName'];
     $password = $_POST['SIGNIN_password'];
     $email = $_POST['SIGNIN_email'];
-    $accountType = "Admin";
+    $accountType = "User";
 
     require_once "../db_credentials.php";
     $conn = mysqli_connect(DB_HOST, DB_USER, DB_PW, DB_NAME);
