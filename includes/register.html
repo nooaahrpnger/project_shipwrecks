@@ -22,31 +22,28 @@
         </form>
     </div>
     <script>
-        $(document).ready(function() 
-        {
-            $('#showRegisterForm').click(function() 
-            {
+        $(document).ready(function() {
+            $('#showRegisterForm').click(function() {
                 $('#registerForm').show();
             });
-
-            $("#registerButton").submit(function(e) 
-            {
+    
+            $("#registerFormInner").submit(function(e) { // Hier binden Sie das Submit-Ereignis an das Formular
                 e.preventDefault(); 
-
+    
                 var formData = $(this).serialize();
-
+    
                 $.ajax({
                     url: 'register.php',
                     type: 'POST',
                     data: formData,
-                    success: function(response) 
-                    {
+                    success: function(response) {
                         console.log('Serverantwort:', response);
-                        
                     }
                 });
             });  
         });
     </script>
+    
+    
 </body>
 </html>

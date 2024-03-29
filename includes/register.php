@@ -4,7 +4,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
     $loginName = $_POST['SIGNIN_loginName'];
     $password = $_POST['SIGNIN_password'];
     $email = $_POST['SIGNIN_email'];
-    $accountType = "User";
+    $accountType = "user";
 
     // Hash das Passwort
     $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
