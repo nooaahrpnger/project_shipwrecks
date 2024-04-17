@@ -6,6 +6,7 @@
         <ul>
             <li><a href="index.php?page=homepage">Home</a></li>
             <li><a href="index.php?page=quiz">Quiz</a></li>
+            <li><a href="index.php?page=searchShip">Search</a></li>
            
         </ul>
     </nav>
