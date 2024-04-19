@@ -1,8 +1,0 @@
-if(isset($_POST["createData"])) {
-    $wreckDate = mysqli_real_escape_string($dbc, $_POST["wreckDate"]);
-    $wreckName = mysqli_real_escape_string($dbc, $_POST["wreckName"]);
-    $country = mysqli_real_escape_string($dbc, $_POST["country"]);
-    $description = mysqli_real_escape_string($dbc, $_POST["description"]);
-
-    insertShipwreck($wreckDate, $wreckName, $country, $description);
-}
