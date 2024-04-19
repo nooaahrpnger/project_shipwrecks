@@ -14,9 +14,6 @@
     <title>Shipwrecked</title>
 </head>
 <body style="margin: 0px;">
-
-
-
     <?php
         if(isset($_GET['page'])) {
             $page = $_GET['page'];
