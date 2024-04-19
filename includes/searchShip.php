@@ -1,5 +1,5 @@
 <?php
-require_once '../db_credentials.php';
+require_once 'db_credentials.php';
 
 $conn = new mysqli(DB_HOST, DB_USER, DB_PW, DB_NAME);
 

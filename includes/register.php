@@ -10,7 +10,7 @@
         // Hash das Passwort
         $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
-        require_once "../db_credentials.php";
+        require_once "db_credentials.php";
         $conn = new mysqli(DB_HOST, DB_USER, DB_PW, DB_NAME);
 
         // Überprüfe die Verbindung

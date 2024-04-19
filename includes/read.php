@@ -1,6 +1,6 @@
 <?php
 
-require_once '../db_credentials.php';
+require_once 'db_credentials.php';
 require_once __DIR__ . '/includes/Functions/DB_connection_function.php';
 
 header("Access-Control-Allow-Origin: *");

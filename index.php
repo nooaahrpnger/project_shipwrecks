@@ -8,25 +8,25 @@
 </head>
 <body>
     
-<?php include("header.php"); ?>
+<?php include("includes/header.php"); ?>
 
 <div class="container">
     <?php
     if (isset($_GET['page']) && !empty($_GET['page'])) {
-        $file =  $_GET['page']. ".php";
+        $file =  $_GET['page'];
         if(file_exists($file)) {
             include($file);
         } else {
             echo "<p>Page not found</p>";
         }
     } else {
-        include("hompage.php");
+        include("includes/hompage.php");
     }
     ?>
 </div>
 
 </body>
 <?php
-include('footer.php');
+include('includes/footer.php');
 ?>
 </html>
