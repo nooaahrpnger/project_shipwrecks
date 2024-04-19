@@ -7,13 +7,11 @@
         $accountType = "user";
         $quizResults = 0;
 
-        // Hash das Passwort
         $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
         require_once "db_credentials.php";
         $conn = new mysqli(DB_HOST, DB_USER, DB_PW, DB_NAME);
 
-        // Überprüfe die Verbindung
         if ($conn->connect_error) 
         {
             die("Connection failed: " . $conn->connect_error);
@@ -22,7 +20,6 @@
         $stmt = $conn->prepare("INSERT INTO shipwrecks_Users (dtUsername, dtEmail, dtPassword, dtAccountType) VALUES (?, ?, ?, ?)");
         $stmt->bind_param("ssss", $loginName, $email, $hashedPassword, $accountType);
 
-        // Führe das Prepared Statement aus
         if ($stmt->execute()) 
         {
             echo "Datensatz erfolgreich eingefügt. ";
