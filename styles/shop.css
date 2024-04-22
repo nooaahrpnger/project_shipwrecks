@@ -27,3 +27,61 @@
     margin: 10px; /* Abstand zwischen den Icons */
     cursor: pointer; /* Zeiger beim Überfahren */
 }
+/* Produkt-Container */
+.product-container {
+    display: flex;
+    align-items: center;
+    gap: 20px; /* Abstand zwischen Bild und Informationen */
+}
+
+/* Bild-Container */
+.product-image-container {
+    width: 50%; /* Breite des Bildcontainers */
+    overflow: hidden; /* Bild wird bei Bedarf beschnitten */
+    border-radius: 10px; /* Abgerundete Ecken */
+}
+
+/* Produktbild */
+.product-image {
+    width: 100%; /* Bild füllt den Container aus */
+    height: 100%; /* Bild füllt den Container aus */
+    object-fit: cover; /* Bild wird proportioniert und zugeschnitten */
+}
+
+/* Produktinformationen */
+.product-info {
+    flex: 1; /* Füllt den verbleibenden Platz im Container aus */
+}
+
+/* Produktname */
+.product-name {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+/* Produktbeschreibung */
+.product-description {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+/* Lagerbestand */
+.product-stock {
+    font-size: 16px;
+    color: #666; /* Farbe für den Lagerbestand */
+}
+.size-chart {
+    width: 100%; /* Breite des sizechart-Bildes */
+    height: auto; /* Automatische Höhe basierend auf der Breite */
+    display: block; /* Standardmäßig als Blockelement anzeigen */
+    margin-top: 10px; /* Abstand nach oben */
+}
+.sizechart-image {
+    /* Deine ursprünglichen Stile für das Bild */
+    transition: transform 0.3s; /* Übergangseffekt für eine sanfte Animation */
+}
+
+.product-image.enlarged {
+    transform: scale(1.2); /* Vergrößern des Bildes auf 120% */
+}

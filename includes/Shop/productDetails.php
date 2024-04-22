@@ -1,5 +1,4 @@
 <?php
-
     define("DB_HOST","92.42.47.76");
     define("DB_USER","webap_project");
     define("DB_PW","webap_123");
@@ -21,10 +20,28 @@
         // Produktinformationen ausgeben
         if (mysqli_num_rows($result) > 0) {
             $row = mysqli_fetch_assoc($result);
-            echo "<img src='includes/Shop/images/" . $row['dtImage'] . "' alt='" . $row['dtItemName'] . "'><br>";
-            echo "<p>Name: " . $row['dtItemName'] . "</p>";
-            echo "<p>Description: " . $row['dtDescription'] . "</p>";
-            echo "<p>Stock: " . $row['dtStockQuantity'] . "</p>";
+            echo '<div class="product-container">';
+                echo '<div class="product-image-container">';
+                echo '<img src="includes/Shop/images/' . $row['dtImage'] . '" alt="' . $row['dtItemName'] . '" class="product-image">';
+                echo '</div>';
+                echo '<div class="product-info">';
+                echo '<p class="product-name">' . $row['dtItemName'] . '</p>';
+                echo '<p class="product-description">' . $row['dtDescription'] . '</p>';
+                // Produktstock auf der rechten Seite anzeigen
+                echo '<p class="product-stock">Stock: ' . $row['dtStockQuantity'] . '</p>';
+                // "Add to Cart" -Button hinzufügen
+                echo '<button class="add-to-cart-button">Add to Cart</button>';
+                echo '</div>';
+                echo '</div>';
+                echo "<hr style='color: black;'>";
+
+            echo "<div>";
+                if ($row['dtCategory'] === 'Clothing') {
+                    echo "<div>";
+                    echo '<img src="includes/Shop/images/sizechart.jpg" alt="Size Chart" class="size-chart" class="sizechart-image">';
+                    echo "</div>";
+                }
+            echo "</div>";
         } else {
             echo "Produkt nicht gefunden.";
         }
@@ -32,6 +49,4 @@
 
     // Datenbankverbindung schließen
     mysqli_close($dbc);
-
-
 ?>

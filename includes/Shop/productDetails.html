@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/shop.css">
     <title>Product Details</title>
 </head>
 <body>
@@ -50,6 +51,23 @@
                         console.error(xhr.responseText);
                     });
                 }
+            });
+
+            document.addEventListener("DOMContentLoaded", function() {
+                // Bild-Element auswählen
+                var productImage = document.getElementById("productImage");
+
+                // Eventlistener für das Klickereignis hinzufügen
+                productImage.addEventListener("click", function() {
+                    // Größe des Bildes ändern
+                    if (productImage.classList.contains("enlarged")) {
+                        // Wenn das Bild bereits vergrößert ist, setze es zurück
+                        productImage.classList.remove("enlarged");
+                    } else {
+                        // Ansonsten vergrößere das Bild
+                        productImage.classList.add("enlarged");
+                    }
+                });
             });
         });
     </script>
