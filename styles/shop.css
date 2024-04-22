@@ -19,3 +19,11 @@
     width: 100%; 
     border-radius: 5px; 
 }
+.filterIcon {
+    font-size: 36px; /* Größe der Icons */
+    border-radius: 50%; /* Runder Hintergrund */
+    background-color: #ccc; /* Hintergrundfarbe */
+    padding: 15px; /* Innenabstand für den Text */
+    margin: 10px; /* Abstand zwischen den Icons */
+    cursor: pointer; /* Zeiger beim Überfahren */
+}
