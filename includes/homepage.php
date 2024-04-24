@@ -16,6 +16,8 @@
         tragedies and the history they've left behind.
     </p>
 
-
-
-
+    
+    <img src="images/HomePageImg1.png" alt="HomePageImg1" width="280" height="200">
+    <img src="images/HomePageImg2.png" alt="HomePageImg2" width="280" height="200">
+    <img src="images/HomePageImg3.png" alt="HomePageImg3" width="280" height="200">
+    <img src="images/HomePageImg4.png" alt="HomePageImg4" width="290" height="200">
