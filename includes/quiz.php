@@ -52,7 +52,7 @@
 
         <input type="submit" name="DATA_submit" value="Finish Quiz">
     </form>
-    <script src="quiz.js"></script>
+    <script src="../js/quiz.js"></script>
 
     <?php
     include "FeatureInsertPoints.php";
