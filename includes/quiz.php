@@ -57,7 +57,7 @@
     <?php
     include "FeatureInsertPoints.php";
     
-    insertQuizResult($userID,$score);
+    
 
     ?>
 </body>
