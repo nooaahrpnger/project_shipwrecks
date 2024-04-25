@@ -1,5 +1,5 @@
 <?php
-    require_once '../db_credentials.psp';
+    require_once 'db_credentials.psp';
 
 
     header("Access-Control-Allow-Origin: *");

@@ -1,5 +1,5 @@
 <?php
-require_once "../db_credentials.php";
+require_once "db_credentials.php";
 
 function insertShipwreck($wreckDate, $wreckName, $country, $description) {
     $dbc = mysqli_connect(DB_HOST, DB_USER, DB_PW, DB_NAME);
