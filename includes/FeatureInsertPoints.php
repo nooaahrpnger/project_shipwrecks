@@ -2,16 +2,15 @@
 require_once "db_credentials.php";
 include_once "quiz.php";
 
-// Check for form submission
+
 if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['DATA_submit'])) {
-    // Assuming user_id is stored in session
+    
     if(isset($_SESSION['user_id'])) {
         $userID = $_SESSION['user_id']; 
     } else {
         echo "User konnte nicht gefunden werden. Bitte loggen Sie sich ein.";
     }
 
-    // Process quiz answers and calculate score
     $answers = array();
     for ($i = 1; $i <= 10; $i++) {
         $answers[] = $_POST['q'.$i];
@@ -25,7 +24,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['DATA_submit'])) {
         }
     }
 
-    // Insert quiz result into database
+   
     insertQuizResult($userID, $score);
 }
 
