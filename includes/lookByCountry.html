@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shipwrecks</title>
+    <link rel="stylesheet" href="styles/lookByCountry.css">
+    <style>
+
+    </style>
+</head>
+<body>
+    <h1>Shipwrecks</h1>
+    <div id="countries"></div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            fetch("includes/get_country.php")
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.json();
+                })
+                .then(countries => {
+                    displayCountries(countries);
+                })
+    
+            function displayCountries(countries) {
+                var countriesDiv = document.getElementById("countries");
+                Object.keys(countries).forEach(country => {
+                    fetch(`https://restcountries.com/v3.1/name/${encodeURIComponent(country)}?fields=flags`)
+                        .then(response => response.json())
+                        .then(countryData => {
+                            var countryCard = document.createElement("div");
+                            countryCard.className = "country-card";
+                            
+                            countryCard.style.backgroundImage = `url(${countryData[0].flags.svg})`;
+                            countryCard.style.backgroundSize = '100% auto'; 
+                            countryCard.style.backgroundPosition = 'center';
+                            countryCard.style.backgroundRepeat = 'no-repeat'; 
+                            countryCard.textContent = country;
+                            
+                            countryCard.addEventListener("click", function() {
+                                window.location.href = "includes/ships.html?country=" + encodeURIComponent(country);
+                            });
+        
+                            countriesDiv.appendChild(countryCard);
+                        });
+                });
+            }
+        });
+    </script>    
+</body>
+</html>

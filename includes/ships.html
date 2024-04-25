@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ships</title>
+</head>
+<body>
+    <h1>Ships</h1>
+    <div id="ships"></div>
+
+    <script>
+        // Fetch ships data for the selected country
+        var country = "<?php echo $_GET['country']; ?>"; // Get the country name from the URL
+        fetch("get_ships.php?country=" + encodeURIComponent(country))
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(ships => {
+                console.log(ships);
+                displayShips(ships);
+            })
+            .catch(error => {
+                console.error('There was a problem with the fetch operation:', error);
+            });
+
+        // Function to display ships
+        function displayShips(ships) {
+            var shipsDiv = document.getElementById("ships");
+            ships.forEach(ship => {
+                var shipCard = document.createElement("div");
+                shipCard.className = "ship-card";
+                shipCard.innerHTML = "<p><strong>Ship Name:</strong> " + ship.dtShipName + "</p>" +
+                                     "<p><strong>Wreckage Date:</strong> " + ship.dtWreckageDate + "</p>" +
+                                     "<p><strong>Description:</strong> " + ship.dtDescription + "</p>";
+                shipsDiv.appendChild(shipCard);
+            });
+        }
+    </script>
+</body>
+</html>

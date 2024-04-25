@@ -7,6 +7,7 @@
             <li><a href="index.php?page=homepage">Home</a></li>
             <li><a href="index.php?page=quiz">Quiz</a></li>
             <li><a href="index.php?page=searchShip">Search</a></li>
+            <li><a href="index.php?page=lookByCountry">Country's</a></li>
            
         </ul>
     </nav>

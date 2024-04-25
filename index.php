@@ -13,7 +13,7 @@
 <div class="container">
     <?php
     if (isset($_GET['page']) && !empty($_GET['page'])) {
-        $file =  $_GET['page']. ".php";
+        $file =  "includes/" . $_GET['page']. ".html";
         if(file_exists($file)) {
             include($file);
         } else {

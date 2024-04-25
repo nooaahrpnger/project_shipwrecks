@@ -17,7 +17,7 @@
         function searchShipwrecks() {
             var searchTerm = document.getElementById("search").value;
 
-            fetch('searchShip.php?search=' + searchTerm)
+            fetch('includes/searchShip.php?search=' + searchTerm)
                 .then(response => response.json())
                 .then(data => {
                     var shipwrecksContainer = document.getElementById("shipwrecksContainer");
