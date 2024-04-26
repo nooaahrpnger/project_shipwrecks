@@ -1,25 +1,114 @@
-.ship-card {
-    background-color: white; /* Ensures cards stand out against the body background */
-    margin: 20px auto; /* Centers the cards with some margin around them */
-    padding: 15px; /* Adds padding inside each card for better text readability */
-    border-radius: 8px; /* Softens the corners of the cards */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
-    width: 80%; /* Matches the container width for consistency */
-    max-width: 600px; /* Limits card width for better layout on large screens */
-    box-sizing: border-box; /* Includes padding and border in the width */
+    .results-container {
+        padding: 20px;
+        background-color: #ffffff;
+        border-radius: 8px;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+        display: none;
+        margin: 20px auto;
+        max-width: 960px;
+    }
+
+    .results-container.active {
+        display: block;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    }
+
+    th, td {
+        text-align: left;
+        padding: 12px 15px;
+        border-bottom: 1px solid #eee;
+    }
+
+    th {
+        background-color: grey;
+        color: #ffffff;
+        font-weight: 600;
+        cursor: pointer;
+        user-select: none; 
+    }
+
+    th:hover {
+        background-color: #6c7a89; 
+        color: #e74c3c; 
+    }
+    td {
+        background-color: #fff;
+        color: #666;
+        transition: background-color 0.3s ease;
+    }
+
+    tr:hover td {
+        background-color: #f1f1f1;
+    }
+
+    .sortable th {
+        position: relative;
+    }
+
+    .sortable th:after {
+        content: '';
+        position: absolute;
+        right: 8px;
+        top: 50%;
+        transform: translateY(-50%);
+        border-width: 0 5px 5px;
+        border-style: solid;
+        border-color: transparent transparent #ffffff;
+        transition: all 0.3s ease;
+    }
+
+    .sortable th.sort-asc:after {
+        border-width: 5px 5px 0;
+        border-color: #ffffff transparent transparent;
+    }
+
+    .sortable th.sort-desc:after {
+        border-width: 0 5px 5px;
+        border-color: transparent transparent #ffffff;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+        .results-container {
+            padding: 10px;
+        }
+
+        th, td {
+            padding: 8px 10px;
+            font-size: 14px;
+        }
+    }
+
+    @media (max-width: 480px) {
+        body {
+            padding: 10px;
+        }
+
+        th, td {
+            padding: 6px 8px;
+        }
+    }
+.sortable th:after {
+content: '';
+position: absolute;
+right: 5px;
+top: 50%;
+transform: translateY(-50%);
+border-width: 5px;
+border-style: solid;
+border-color: transparent transparent transparent transparent;
 }
 
-.ship-card p {
-    color: #333; /* Dark grey color for text, ensures good readability */
-    font-size: 16px; /* Adequate font size for readability */
-    line-height: 1.4; /* Improves spacing between lines of text */
-    margin-bottom: 10px; /* Adds space between paragraphs */
+.sortable th.sort-asc:after {
+border-color: transparent transparent #333 transparent; 
 }
 
-.ship-card p:last-child {
-    margin-bottom: 0; /* Removes bottom margin from the last paragraph */
-}
-
-.ship-card strong {
-    color: #000; /* Makes labels bold and darker for emphasis */
+.sortable th.sort-desc:after {
+border-color: #333 transparent transparent transparent;
 }

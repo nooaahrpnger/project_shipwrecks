@@ -1,44 +1,98 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ships</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shipwreck Records</title>
+<link rel="stylesheet" href="styles/getShips.css"> 
 </head>
 <body>
-    <h1>Ships</h1>
-    <div id="ships"></div>
+<h1>Shipwreck Records</h1>
+<div id="results" class="results-container">
+    <table id="resultsTable" class="sortable">
+        <thead>
+            <tr>
+                <th onclick="sortTable('name')">Ship Name</th>
+                <th onclick="sortTable('date')">Wreckage Date</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+</div>
 
-    <script>
-        // Fetch ships data for the selected country
-        var country = "<?php echo $_GET['country']; ?>"; // Get the country name from the URL
-        fetch("get_ships.php?country=" + encodeURIComponent(country))
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                return response.json();
-            })
-            .then(ships => {
-                console.log(ships);
-                displayShips(ships);
-            })
-            .catch(error => {
-                console.error('There was a problem with the fetch operation:', error);
-            });
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const country = urlParams.get('country');
+    if (!country) {
+        alert('No country specified. Please use a URL like "?country=Germany".');
+        window.location.href = "index.php?page=lookByCountry";
+    } else {
+        fetchShipwrecks(country);
+    }
+});
 
-        // Function to display ships
-        function displayShips(ships) {
-            var shipsDiv = document.getElementById("ships");
-            ships.forEach(ship => {
-                var shipCard = document.createElement("div");
-                shipCard.className = "ship-card";
-                shipCard.innerHTML = "<p><strong>Ship Name:</strong> " + ship.dtShipName + "</p>" +
-                                     "<p><strong>Wreckage Date:</strong> " + ship.dtWreckageDate + "</p>" +
-                                     "<p><strong>Description:</strong> " + ship.dtDescription + "</p>";
-                shipsDiv.appendChild(shipCard);
-            });
+let shipsData = [];
+let currentSort = { column: '', ascending: true };
+
+function fetchShipwrecks(country) {
+    fetch('includes/get_ships.php?country=' + encodeURIComponent(country))
+    .then(response => response.json())
+    .then(data => {
+        shipsData = data;
+        displayData(shipsData);
+        const resultsContainer = document.getElementById('results');
+        resultsContainer.classList.add('active'); // Show the table with data
+    })
+    .catch(error => {
+        console.error('Error fetching shipwrecks:', error);
+        alert('Failed to fetch shipwrecks. Check the console for details.');
+    });
+}
+
+function displayData(data) {
+    const table = document.getElementById('resultsTable');
+    const tbody = table.getElementsByTagName('tbody')[0];
+    tbody.innerHTML = ''; // Clear previous results
+    data.forEach(ship => {
+        const row = document.createElement('tr');
+        row.innerHTML = `<td>${ship.dtShipName}</td><td>${ship.dtWreckageDate}</td><td>${ship.dtDescription}</td>`;
+        tbody.appendChild(row);
+    });
+}
+
+function sortTable(column) {
+    const sortAsc = currentSort.column === column ? !currentSort.ascending : true;
+    currentSort = { column, ascending: sortAsc };
+    shipsData.sort((a, b) => {
+        if (column === 'name') {
+            return sortAsc ? a.dtShipName.localeCompare(b.dtShipName) : b.dtShipName.localeCompare(a.dtShipName);
+        } else if (column === 'date') {
+            const dateA = new Date(a.dtWreckageDate);
+            const dateB = new Date(b.dtWreckageDate);
+            return sortAsc ? dateA - dateB : dateB - dateA;
         }
-    </script>
+        return 0;
+    });
+    displayData(shipsData);
+    updateSortIndicator(column, sortAsc);
+}
+
+function updateSortIndicator(column, ascending) {
+    const headers = document.querySelectorAll('.sortable th');
+    headers.forEach(header => {
+        header.classList.remove('sort-asc', 'sort-desc'); // Remove both classes initially
+    });
+    const index = column === 'name' ? 1 : 2; // Adjust index if more columns are added or order changes
+    const activeHeader = document.querySelector(`.sortable th:nth-child(${index})`);
+    if (ascending) {
+        activeHeader.classList.add('sort-asc');
+    } else {
+        activeHeader.classList.add('sort-desc');
+    }
+}
+</script>
 </body>
 </html>
