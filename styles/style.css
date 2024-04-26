@@ -71,37 +71,9 @@ footer {
     color: #fff;
     padding: 20px;
     text-align: center;
-    position: fixed;
     left: 0;
     bottom: 0;
     width: 100%;
 }
 
-.footer-content {
-    max-width: 1200px;
-    margin: auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.footer-nav {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-}
-
-.footer-nav li {
-    display: inline;
-    margin-right: 20px;
-}
-
-.footer-nav li a {
-    color: #fff;
-    text-decoration: none;
-}
-
-.footer-nav li a:hover {
-    text-decoration: underline;
-}
 
