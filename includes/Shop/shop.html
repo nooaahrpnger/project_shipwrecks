@@ -25,8 +25,9 @@
 
     <!-- Filter Icons -->
     <div id="filterIcons">
-        <i class="fas fa-tshirt filterIcon" data-category="Clothing"></i> <!-- Clothing Icon -->
-        <i class="fas fa-ship filterIcon" data-category="Ship"></i> <!-- Ship Icon -->
+        <i class="fas fa-tshirt filterIcon" data-category="Clothing"></i>   <!-- Clothing Icon -->
+        <i class="fas fa-ship filterIcon" data-category="Ship"></i>         <!-- Ship Icon -->
+        <i class="fas fa-wine-bottle filterIcon" data-category="Bottled Ship"></i>     <!-- Bottled Ships -->
     </div>
 
     <!-- Container für jede Kategorie -->
@@ -37,6 +38,10 @@
     <div class="categoryContainer" id="shipContainer">
         <h2>Ships</h2>
         <div class="productContainer" id="shipProducts"></div>
+    </div>
+    <div class="categoryContainer" id="bottledShipContainer">
+        <h2>Bottled Ship</h2>
+        <div class="productContainer" id="bottledShipProducts"></div>
     </div>
 
     <script>
@@ -97,6 +102,8 @@
                     $('#clothingProducts').append(productHTML);
                 } else if (product.dtCategory === 'Ship') {
                     $('#shipProducts').append(productHTML);
+                } else if (product.dtCategory === 'Bottled Ship') {
+                    $('#bottledShipProducts').append(productHTML);
                 }
             });
         }

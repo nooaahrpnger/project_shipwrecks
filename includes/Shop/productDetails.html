@@ -20,7 +20,7 @@
             var productId = getParameterByName('id');
             // AJAX-Anfrage an das Backend senden, um die Produktinformationen abzurufen
             $.ajax({
-                url: 'productDetails.php',
+                url: 'includes/Shop/productDetails.php',
                 type: 'GET',
                 data: {id: productId},
                 dataType: 'html',
