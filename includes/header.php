@@ -7,5 +7,6 @@
         <li><a href="index.php?page=includes/quiz.html">Quiz</a></li>
         <li><a href="index.php?page=includes/searchShip.html">Search</a></li>
         <li><a href="index.php?page=includes/Shop/shop.html">Shop</a></li>
+        <li><a href="index.php?page=includes/Shop/checkout.php">Cart</a></li>
     </ul>
 </nav>

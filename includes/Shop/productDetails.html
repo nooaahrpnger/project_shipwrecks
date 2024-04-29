@@ -18,6 +18,7 @@
         $(document).ready(function(){
             // Die Produkt-ID aus der URL lesen
             var productId = getParameterByName('id');
+
             // AJAX-Anfrage an das Backend senden, um die Produktinformationen abzurufen
             $.ajax({
                 url: 'includes/Shop/productDetails.php',
@@ -69,7 +70,25 @@
                     }
                 });
             });
+            
+<!--    -------------------------------------------------------  Cart ---------------------------------------->
+
+            $('#productDetails').on('click', '.add-to-cart-button', function() {
+                $.ajax({
+                    url: 'includes/Shop/addToCart.php',
+                    type: 'POST',
+                    data: {id: productId},
+                    success: function(response){
+                        alert("Item added to cart!" + productId);
+                    },
+                    error: function(xhr, status, error){
+                        console.error(xhr.responseText);
+                    }
+                });
+            });
         });
+
+       
     </script>
 </body>
 </html>
