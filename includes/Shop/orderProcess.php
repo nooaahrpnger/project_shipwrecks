@@ -41,12 +41,8 @@
             }
         }
         echo "Order processed. Total: $$totalAmount";
-    } 
-    else 
-    {
-        echo "Your cart is empty.";
+        header('Location: ../../index.php');
     }
-
     unset($_SESSION['cart']);
 
     mysqli_close($dbc);
