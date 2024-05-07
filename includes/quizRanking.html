@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,6 +23,7 @@
 
     <script>
         $(document).ready(function() {
+            // AJAX-Anfrage zum Abrufen der Quizergebnisse
             $.ajax({
                 url: 'includes/backendRanking.php',
                 type: 'POST',
@@ -30,13 +32,15 @@
                     var html = "";
                     $.each(data, function(index, item) {
                         html += "<tr>";
-                        html += "<td>" + item.dtUsername + "</td>"; 
-                        html += "<td>" + item.dtQuizResults + "</td>"; 
+                        html += "<td>" + item.dtUsername + "</td>"; // Benutzername von der datenbank
+                        html += "<td>" + item.dtQuizResults + "</td>"; // Punkte von der Datenbank 
                         html += "</tr>";
                     });
+                    // Ergebnisse in die Tabelle einfügen
                     $('#quizResults').html(html); 
                 },
                 error: function(xhr, status, error) {
+                    // Fehlerbehandlung bei einem Fehler in der AJAX-Anfrage
                     console.error('Error:', error);
                     $('#quizResults').html("<tr><td colspan='2'>Ein Fehler ist aufgetreten</td></tr>");
                 }
