@@ -28,7 +28,7 @@ li
 </style>
 <nav>
     <ul>
-        <li><a href="index.php?page=homepage"><i class="fa-solid fa-house"></i></a></li>
+        <li><a href="index.php?page=frontend_homepage"><i class="fa-solid fa-house"></i></a></li>
         <li><a href="index.php?page=quizRanking"><i class="fa-solid fa-ranking-star"></i></a></li>
         <li><a href="index.php?page=statics"><i class="fa-solid fa-chart-simple"></i></a></li>
         <li><a href="index.php?page=calendar"><i class="fa-solid fa-calendar"></i></a></li>

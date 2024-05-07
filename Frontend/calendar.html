@@ -40,86 +40,81 @@
 
     </script>
     <style>
-        body {
-            margin: 0;
-            padding: 20px;
-            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-            background-color: #f7f7f7;
-            color: #333;
-        }
+/* Scope all calendar specific styles under a unique container class */
+.calendar-container #calendar {
+    max-width: 1100px;
+    margin: 40px auto;
+    padding: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    background-color: #fff;
+    border-radius: 8px;
+}
 
-        #calendar {
-            max-width: 1100px;
-            margin: 40px auto;
-            padding: 20px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-            background-color: #fff;
-            border-radius: 8px;
-        }
+.calendar-container .fc-toolbar-title {
+    color: #007bff;
+    font-size: 24px;
+    font-weight: bold;
+}
 
-        .fc-toolbar-title {
-            color: #007bff;
-            font-size: 24px;
-            font-weight: bold;
-        }
+.calendar-container .fc-button {
+    background-color: #007bff;
+    color: #fff;
+    border: 1px solid #007bff;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
 
-        .fc-button {
-            background-color: #007bff;
-            color: #fff;
-            border: 1px solid #007bff;
-            padding: 8px 12px;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 16px;
-            transition: background-color 0.3s;
-        }
+.calendar-container .fc-button:hover {
+    background-color: #0056b3;
+}
 
-        .fc-button:hover {
-            background-color: #0056b3;
-        }
+.calendar-container .fc-daygrid-event {
+    margin: 2px 0;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
 
-        .fc-daygrid-event {
-            margin: 2px 0;
-            padding: 4px 8px;
-            border-radius: 4px;
-            font-size: 14px;
-            cursor: pointer;
-            transition: transform 0.3s;
-        }
+.calendar-container .fc-daygrid-event:hover {
+    transform: scale(1.05);
+}
 
-        .fc-daygrid-event:hover {
-            transform: scale(1.05);
-        }
+.calendar-container .fc-highlight {
+    background-color: #bde4ff;
+}
 
-        .fc-highlight {
-            background-color: #bde4ff;
-        }
+.calendar-container .fc-event-title {
+    font-size: 16px;
+    font-weight: bold;
+}
 
-        .fc-event-title {
-            font-size: 16px;
-            font-weight: bold;
-        }
+.calendar-container .fc-today {
+    background-color: #e3f2fd;
+    border: none;
+}
 
-        .fc-today {
-            background-color: #e3f2fd;
-            border: none;
-        }
+.calendar-container .fc-non-business {
+    background-color: #f8d7da;
+}
 
-        .fc-non-business {
-            background-color: #f8d7da;
-        }
+.calendar-container .fc-scrollbar {
+    display: none;
+}
 
-        .fc-scrollbar {
-            display: none;
-        }
-
-        .fc-view-harness {
-            border: none;
-        }
-
+.calendar-container .fc-view-harness {
+    border: none;
+}
     </style>
 </head>
 <body>
-<div id='calendar'></div>
+    <div class="calendar-container">
+        <div id="calendar">
+        </div>
+    </div>
 </body>
 </html>

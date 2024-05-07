@@ -1,6 +1,8 @@
 
 <?php
-require_once "db_credentials.php";
+
+header('Content-Type: application/json');
+require_once "../db_credentials.php";
 $conn = new mysqli(DB_HOST, DB_USER, DB_PW, DB_NAME);
 
 // Verbindung überprüfen

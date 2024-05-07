@@ -7,14 +7,12 @@
     <link rel="stylesheet" href="styles\searchShip_Joe.css">
 </head>
 <body>
-    <h1>Shipwreck Search</h1>
-    <!-- Eingabefeld und Schaltfläche zum Suchen von Schiffswracks -->
-    <label for="search">Schiffsnamen suchen:</label>
-    <input type="text" id="search" name="search">
-    <button onclick="searchShipwrecks()">Suchen</button>
-
-    <!-- Container für die Anzeige der Schiffswrack-Ergebnisse -->
-    <div id="shipwrecksContainer">
+    <div id="shipwreckSearchPage"> <!-- Unique ID for scoping CSS -->
+        <h1>Shipwreck Search</h1>
+        <label for="search">Schiffsnamen suchen:</label>
+        <input type="text" id="search" name="search">
+        <button onclick="searchShipwrecks()">Suchen</button>
+        <div id="shipwrecksContainer"></div>
     </div>
 
     <script>

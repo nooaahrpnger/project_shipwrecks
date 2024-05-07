@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shipwreck Research Hub</title>
+</head>
+<body>
+    <main>
+        <section id="intro">
+            <h2 id="siteTitle"></h2>
+            <p id="siteDescription"></p>
+        </section>
+    </main>
+    <script>
+        $(document).ready(function() {
+            $.getJSON('Backend/backend_home.php', function(data) {
+                $('#siteTitle').text(data.title);
+                $('#siteDescription').text(data.description);
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="styles/quiz.css">
     <h1>Sunken Ships Quiz</h1>
     <form id="quizForm"  method="post">
         <h2>Question 1: Which ship, often called "The Ship of Gold", sank in 1857 off the coast of South Carolina?</h2>

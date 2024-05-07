@@ -7,96 +7,89 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <style>
-        body {
-            margin: 0;
-            padding: 20px;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f7f7f7;
-            color: #333;
-        }
+       /* Chart container specific styles */
+body.chart-page {
+    padding: 20px;
+    background-color: #f7f7f7;
+}
 
-        .chart-container {
-            display: flex;
-            flex-direction: row;
-            justify-content: space-around; /* Zentriert die Canvas-Elemente und verteilt den Raum dazwischen */
-            align-items: flex-start;
-            flex-wrap: wrap; /* Erlaubt Umbruch auf kleineren Bildschirmen */
-            padding: 20px;
-            gap: 20px; /* Fügt Platz zwischen den Chart-Canvas hinzu */
-        }
+.chart-page .chart-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    padding: 20px;
+    gap: 20px;
+}
 
-        .chart-canvas {
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            background-color: #ffffff;
-            border-radius: 8px;
-            padding: 15px;
-            box-sizing: border-box;
-            flex: 1; /* Erlaubt den Canvas, zu wachsen und den verfügbaren Platz zu nutzen */
-            margin: 10px;
-            min-width: 300px; /* Minimale Breite jedes Canvas */
-        }
+.chart-page .chart-canvas {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff;
+    border-radius: 8px;
+    padding: 15px;
+    box-sizing: border-box;
+    flex: 1;
+    margin: 10px;
+    min-width: 300px;
+}
 
-        /* Additional styles for Chart.js tooltips */
-        .tooltip {
-            background: rgba(0, 0, 0, 0.7);
-            border-radius: 4px;
-            color: white;
-            padding: 7px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-            text-align: center;
-        }
+/* Additional styles for tooltips within the chart area */
+.chart-page .tooltip {
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 4px;
+    color: white;
+    padding: 7px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
 
-        /* Custom styles for Chart.js legends */
-        .legend {
-            display: flex;
-            justify-content: space-around;
-            align-items: center;
-            margin-bottom: 10px;
-        }
+/* Custom legend styles within the chart area */
+.chart-page .legend {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: 10px;
+}
 
-        .legend-item {
-            display: flex;
-            align-items: center;
-        }
+.chart-page .legend-item {
+    display: flex;
+    align-items: center;
+}
 
-        .legend-color {
-            display: inline-block;
-            width: 12px;
-            height: 12px;
-            margin-right: 5px;
-        }
+.chart-page .legend-color {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    margin-right: 5px;
+}
 
-        /* This aligns text within the chart elements */
-        .chart-text {
-            text-align: center;
-            font-weight: bold;
-            font-size: 14px;
-        }
+.chart-page .chart-text {
+    text-align: center;
+    font-weight: bold;
+    font-size: 14px;
+}
 
-        /* Styling for axes labels and ticks */
-        .axis-labels {
-            color: #666;
-            font-size: 12px;
-        }
+.chart-page .axis-labels {
+    color: #666;
+    font-size: 12px;
+}
 
-        .axis-ticks {
-            font-size: 10px;
-            font-weight: bold;
-        }
+.chart-page .axis-ticks {
+    font-size: 10px;
+    font-weight: bold;
+}
 
-        /* Improving visibility for the chart's grid lines */
-        .grid-lines {
-        border-style: dashed;
-        border-width: 1px;
-        border-color: #ddd;
-        }
+.chart-page .grid-lines {
+    border-style: dashed;
+    border-width: 1px;
+    border-color: #ddd;
+}
 
-        /* Highlighting the axes */
-        .axes {
-            border-color: #333;
-        }
+.chart-page .axes {
+    border-color: #333;
+}
 
-                
     </style>
 </head>
 <body>

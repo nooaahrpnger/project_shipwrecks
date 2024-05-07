@@ -1,0 +1,72 @@
+/* Base styles for the quiz form */
+#quizForm {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.15);
+    width: 80%;
+    max-width: 640px;
+    margin: 50px auto;
+    font-size: 16px;
+    line-height: 1.5;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Styling for question headers */
+#quizForm h2 {
+    color: #2C3E50; /* Rich blue color */
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    font-size: 20px;
+    border-bottom: 1px solid #EAECEE; /* Subtle separator */
+}
+
+/* Styling for radio buttons and labels */
+input[type="radio"] {
+    margin-right: 10px;
+    cursor: pointer;
+    accent-color: #3498DB; /* Blue accent for checkboxes */
+}
+
+input[type="radio"] + label {
+    cursor: pointer;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+/* Styles for the submit button */
+input[type="submit"] {
+    background-color: #3498DB; /* Blue background for the submit button */
+    color: #FFFFFF;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px;
+    transition: background-color 0.3s ease;
+    display: block;
+    width: 100%;
+    box-sizing: border-box; /* Ensures padding doesn't affect width */
+    margin-top: 30px;
+}
+
+input[type="submit"]:hover {
+    background-color: #2980B9; /* Darker blue on hover */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    #quizForm {
+        width: 95%;
+        padding: 20px;
+    }
+
+    #quizForm h2 {
+        font-size: 18px;
+    }
+
+    input[type="submit"] {
+        padding: 10px 20px;
+        font-size: 16px;
+    }
+}
