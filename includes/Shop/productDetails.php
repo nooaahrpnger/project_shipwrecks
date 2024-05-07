@@ -34,7 +34,6 @@
                 echo '<button class="add-to-cart-button">Add to Cart</button>';
                 echo '</div>';
                 echo '</div>';
-                echo "<hr style='color: black;'>";
 
             echo "<div>";
                 if ($row['dtCategory'] === 'Clothing') {
