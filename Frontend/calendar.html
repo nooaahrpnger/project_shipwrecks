@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8' />
+    <meta name="author" content="Galafate Mika">
+    <link href='https://unpkg.com/fullcalendar@5/main.min.css' rel='stylesheet' />
+    <script src='https://unpkg.com/interactjs@1.10.11/dist/interact.min.js'></script>
+    <script src='https://unpkg.com/fullcalendar@5/main.min.js'></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+
+        // Fügt einen Event Listener hinzu, der darauf wartet, dass das gesamte HTML-Dokument geladen ist.
+        document.addEventListener('DOMContentLoaded', function() {
+        // Greift auf das HTML-Element zu, das den Kalender darstellen wird.
+        var calendarEl = $('#calendar')[0]; // Greift das native DOM-Element ab
+
+        // Erstellt ein neues FullCalendar-Instanz mit dem selektierten Element.
+        var calendar = new FullCalendar.Calendar(calendarEl, {
+            // Setzt die initiale Ansicht des Kalenders auf Monatsansicht.
+            initialView: 'dayGridMonth',
+            
+            // Definiert eine Funktion, die Ereignisdaten für den Kalender dynamisch lädt.
+            events: function(fetchInfo, successCallback, failureCallback) {
+                // Nutzt jQuery, um eine GET-Anfrage zu senden und Ereignisdaten im JSON-Format zu laden.
+                $.ajax({
+                    url: '../Backend/getShipwrecks.php', // Die URL, von der die Daten abgerufen werden.
+                    type: 'GET',
+                    dataType: 'json',
+                    success: function(response) {
+                        // Bei Erfolg übergibt die Funktion die Daten an FullCalendar.
+                        successCallback(response);
+                    }
+                });
+            }
+        });
+
+    // Rendert den Kalender im Browser.
+    calendar.render();
+});
+
+    </script>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            background-color: #f7f7f7;
+            color: #333;
+        }
+
+        #calendar {
+            max-width: 1100px;
+            margin: 40px auto;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            background-color: #fff;
+            border-radius: 8px;
+        }
+
+        .fc-toolbar-title {
+            color: #007bff;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .fc-button {
+            background-color: #007bff;
+            color: #fff;
+            border: 1px solid #007bff;
+            padding: 8px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+
+        .fc-button:hover {
+            background-color: #0056b3;
+        }
+
+        .fc-daygrid-event {
+            margin: 2px 0;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .fc-daygrid-event:hover {
+            transform: scale(1.05);
+        }
+
+        .fc-highlight {
+            background-color: #bde4ff;
+        }
+
+        .fc-event-title {
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .fc-today {
+            background-color: #e3f2fd;
+            border: none;
+        }
+
+        .fc-non-business {
+            background-color: #f8d7da;
+        }
+
+        .fc-scrollbar {
+            display: none;
+        }
+
+        .fc-view-harness {
+            border: none;
+        }
+
+    </style>
+</head>
+<body>
+<div id='calendar'></div>
+</body>
+</html>
