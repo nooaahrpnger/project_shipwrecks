@@ -1,7 +1,7 @@
 <?php
 
 function connectToDatabase() {
-    $host = '193.41.237.172';
+    $host = '92.42.47.76';
     $username = 'webap_project';
     $password = 'webap_123';
     $dbName = 'webap_shipwrecks';
@@ -13,8 +13,7 @@ function connectToDatabase() {
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
     }
-
-    echo "Connected successfully";
+    
     return $conn;
 }
 

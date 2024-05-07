@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shipwreck Records</title>
+<link rel="stylesheet" href="styles/getShips.css"> 
+</head>
+<body>
+<h1>Shipwreck Records</h1>
+<div id="results" class="results-container">
+    <table id="resultsTable" class="sortable">
+        <thead>
+            <tr>
+                <th onclick="sortTable('name')">Ship Name</th>
+                <th onclick="sortTable('date')">Wreckage Date</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+</div>
+
+<script>
+$(document).ready(function() {
+    // Use jQuery to handle URL search parameters
+    var country = new URLSearchParams(window.location.search).get('country');
+    if (!country) {
+        alert('No country specified. Please use a URL like "?country=Germany".');
+        window.location.href = "index.php?page=country";
+    } else {
+        fetchShipwrecks(country);
+    }
+
+    // Global variable to hold shipwreck data
+    var shipsData = [];
+    var currentSort = { column: '', ascending: true };
+
+    function fetchShipwrecks(country) {
+        $.ajax({
+            url: 'Backend/get_ships.php?country=' + encodeURIComponent(country),
+            method: 'GET',
+            dataType: 'json',
+            success: function(data) {
+                shipsData = data;
+                displayData(shipsData);
+                $('#results').addClass('active');
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+                console.error('Error fetching shipwrecks:', errorThrown);
+                alert('Failed to fetch shipwrecks. Check the console for details.');
+            }
+        });
+    }
+
+    function displayData(data) {
+        var $tbody = $('#resultsTable tbody');
+        $tbody.empty(); // Clear existing table body contents
+        $.each(data, function(index, ship) {
+            var $row = $('<tr>').html(`<td>${ship.dtShipName}</td><td>${ship.dtWreckageDate}</td><td>${ship.dtDescription}</td>`);
+            $tbody.append($row);
+        });
+    }
+
+    function sortTable(column) {
+        var sortAsc = currentSort.column === column ? !currentSort.ascending : true;
+        currentSort = { column: column, ascending: sortAsc };
+        shipsData.sort(function(a, b) {
+            if (column === 'name') {
+                return sortAsc ? a.dtShipName.localeCompare(b.dtShipName) : b.dtShipName.localeCompare(a.dtShipName);
+            } else if (column === 'date') {
+                var dateA = new Date(a.dtWreckageDate);
+                var dateB = new Date(b.dtWreckageDate);
+                return sortAsc ? dateA - dateB : dateB - dateA;
+            }
+            return 0;
+        });
+        displayData(shipsData);
+        updateSortIndicator(column, sortAsc);
+    }
+
+    function updateSortIndicator(column, ascending) {
+        var $headers = $('.sortable th');
+        $headers.removeClass('sort-asc sort-desc');
+        var index = column === 'name' ? 1 : 2;
+        var $activeHeader = $('.sortable th:nth-child(' + index + ')');
+        if (ascending) {
+            $activeHeader.addClass('sort-asc');
+        } else {
+            $activeHeader.addClass('sort-desc');
+        }
+    }
+
+    // Attach click event handlers to table headers for sorting
+    $('.sortable th').click(function() {
+        var column = $(this).data('column');
+        sortTable(column);
+    });
+});
+</script>
+
+</body>
+</html>
