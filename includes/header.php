@@ -14,6 +14,7 @@
             ?>
             <li><a href="index.php?page=includes/Shop/checkout.php">Cart</a></li>
             <li><a href="index.php?page=includes/logout.php">Logout</a></li>
+            <li> <?php $_SESSION["LOGIN_user"] ?> </li>
             <?php
         }
         else
