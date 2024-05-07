@@ -9,7 +9,11 @@
 
         $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
-        require_once "db_credentials.php";
+        define("DB_HOST","92.42.47.76");
+        define("DB_USER","webap_project");
+        define("DB_PW","webap_123");
+        define("DB_NAME","webap_shipwrecks");
+        
         $conn = new mysqli(DB_HOST, DB_USER, DB_PW, DB_NAME);
 
         if ($conn->connect_error) 
@@ -38,6 +42,7 @@
             }
 
             $stmtQuiz->close();
+            
         } 
         else 
         {
@@ -45,6 +50,6 @@
         }
         
         $stmt->close();
-        $conn->close();
+        $conn->close();      
     }
 ?>

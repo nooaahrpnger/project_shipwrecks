@@ -2,6 +2,7 @@
     display: flex;
     flex-wrap: wrap;
 }
+
 .product {
     width: 20%; 
     padding: 10px;
@@ -11,77 +12,110 @@
     margin: 10px; 
     transition: transform 0.3s ease; 
 }
+
 .product:hover {
     transform: scale(1.05); 
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); 
 }
+
 .product img {
     width: 100%; 
     border-radius: 5px; 
 }
-.filterIcon {
-    font-size: 36px; /* Größe der Icons */
-    border-radius: 50%; /* Runder Hintergrund */
-    background-color: #ccc; /* Hintergrundfarbe */
-    padding: 15px; /* Innenabstand für den Text */
-    margin: 10px; /* Abstand zwischen den Icons */
-    cursor: pointer; /* Zeiger beim Überfahren */
+
+#filterIcons {
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
 }
-/* Produkt-Container */
+
+.filterIcon {
+    font-size: 36px; 
+    border-radius: 50%; 
+    background-color: #ccc; 
+    padding: 15px; 
+    margin: 10px; 
+    cursor: pointer; 
+    transition: transform 0.3s ease; /* Glätten der Übergangsanimation */
+}
+
+.filterIcon:hover {
+    animation: pulse 1s infinite; /* Starten der Pulsieren-Animation beim Hover */
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1); /* Startgröße */
+    }
+    50% {
+        transform: scale(1.2); /* Größere Skalierung */
+    }
+    100% {
+        transform: scale(1); /* Zurück zur Startgröße */
+    }
+}
+
 .product-container {
     display: flex;
+    justify-content: center;
     align-items: center;
-    gap: 20px; /* Abstand zwischen Bild und Informationen */
+    flex-direction: column;
+    padding: 20px;
+    background-color: #fff; 
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
 }
 
-/* Bild-Container */
 .product-image-container {
-    width: 50%; /* Breite des Bildcontainers */
-    overflow: hidden; /* Bild wird bei Bedarf beschnitten */
-    border-radius: 10px; /* Abgerundete Ecken */
+    margin-bottom: 20px;
+    text-align: center;
 }
 
-/* Produktbild */
-.product-image {
-    width: 100%; /* Bild füllt den Container aus */
-    height: 100%; /* Bild füllt den Container aus */
-    object-fit: cover; /* Bild wird proportioniert und zugeschnitten */
-}
-
-/* Produktinformationen */
 .product-info {
-    flex: 1; /* Füllt den verbleibenden Platz im Container aus */
+    text-align: center;
 }
 
-/* Produktname */
-.product-name {
-    font-size: 18px;
-    font-weight: bold;
-    margin-bottom: 10px;
+.product-image {
+    width: 300px; 
 }
 
-/* Produktbeschreibung */
-.product-description {
-    font-size: 16px;
-    margin-bottom: 10px;
+.add-to-cart-button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
-/* Lagerbestand */
-.product-stock {
-    font-size: 16px;
-    color: #666; /* Farbe für den Lagerbestand */
+.add-to-cart-button:hover {
+    background-color: #0056b3; 
+}
+
+.product-image {
+    width: 70%; 
+    transition: transform 0.3s ease; 
+}
+
+.product-image:hover {
+    transform: scale(1.1); 
+}
+
+.categoryContainer {
+    background-color: #e0e0e0; 
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 80%;
+    border-radius: 10px;
+    text-align: center; 
 }
 .size-chart {
-    width: 100%; /* Breite des sizechart-Bildes */
-    height: auto; /* Automatische Höhe basierend auf der Breite */
-    display: block; /* Standardmäßig als Blockelement anzeigen */
-    margin-top: 10px; /* Abstand nach oben */
+    width: 100%; 
+    height: auto; 
+    display: block; 
+    margin-top: 10px; 
 }
 .sizechart-image {
-    /* Deine ursprünglichen Stile für das Bild */
-    transition: transform 0.3s; /* Übergangseffekt für eine sanfte Animation */
-}
-
-.product-image.enlarged {
-    transform: scale(1.2); /* Vergrößern des Bildes auf 120% */
+    transition: transform 0.3s; 
 }

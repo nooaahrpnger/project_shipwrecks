@@ -22,7 +22,8 @@
             $row = mysqli_fetch_assoc($result);
             echo '<div class="product-container">';
                 echo '<div class="product-image-container">';
-                echo '<img src="includes/Shop/images/' . $row['dtImage'] . '" alt="' . $row['dtItemName'] . '" class="product-image">';
+                // Kleineres Bild mit Animation
+                echo '<img src="includes/Shop/images/' . $row['dtImage'] . '" alt="' . $row['dtItemName'] . '" class="product-image" style="max-width: 50%; height: auto; animation: fadeIn 0.5s ease;">';
                 echo '</div>';
                 echo '<div class="product-info">';
                 echo '<p class="product-name">' . $row['dtItemName'] . '</p>';
@@ -33,7 +34,6 @@
                 echo '<button class="add-to-cart-button">Add to Cart</button>';
                 echo '</div>';
                 echo '</div>';
-                echo "<hr style='color: black;'>";
 
             echo "<div>";
                 if ($row['dtCategory'] === 'Clothing') {
@@ -50,3 +50,11 @@
     // Datenbankverbindung schließen
     mysqli_close($dbc);
 ?>
+
+<!-- CSS für die Fade-In-Animation -->
+<style>
+    @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+</style>

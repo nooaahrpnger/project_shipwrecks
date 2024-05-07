@@ -2,7 +2,7 @@
 session_start();
 
 // Verbindung zur Datenbank herstellen
-require_once "../db_credentials.php";
+require_once "db_credentials.php";
 $dbc = mysqli_connect(DB_HOST, DB_USER, DB_PW, DB_NAME);
 
 
@@ -22,7 +22,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $username = $_POST['INPUT_username'];
         
         // Passwort aus der Datenbank abrufen, basierend auf dem Benutzernamen
-        $queryLogin = "SELECT dtUsername, dtPassword FROM `shipwrecks_Users` WHERE dtUsername = '$username'";
+        $queryLogin = "SELECT dtUsername, dtPassword, idUser FROM `shipwrecks_Users` WHERE dtUsername = '$username'";
         $result = mysqli_query($dbc, $queryLogin);
 
         if (mysqli_num_rows($result) == 1) {
@@ -34,8 +34,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             if (password_verify($_POST['INPUT_password'], $hashed_password)) {
                 // Anmeldung erfolgreich
                 $_SESSION["LOGIN_user"] = $_POST["INPUT_username"];
-                echo "Eingeloggt als: " . $_SESSION["LOGIN_user"];
-                
+                $_SESSION["userID"] = $row["idUser"];
+                echo "Eingeloggt als: " . $_SESSION["LOGIN_user"];  
                 // Führe hier weitere Aktionen durch, z.B. Setzen von Sitzungsvariablen oder Weiterleiten zu einer anderen Seite
             } else {
                 // Anmeldung fehlgeschlagen
@@ -53,7 +53,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Fehler: Das Formular wurde nicht über POST-Methode gesendet
     echo "Fehler: Das Formular wurde nicht korrekt gesendet.";
 }
-
 // Verbindung zur Datenbank schließen
 mysqli_close($dbc);
 ?>

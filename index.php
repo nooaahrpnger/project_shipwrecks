@@ -1,3 +1,6 @@
+<?php
+    session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,7 +24,7 @@
                 echo "<p>Page not found</p>";
             }
         } else {
-            include("includes/hompage.php");
+            include("includes/homepage.php");
         }
         ?>
     </div>
