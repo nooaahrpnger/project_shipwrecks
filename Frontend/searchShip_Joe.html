@@ -23,7 +23,7 @@
             var searchTerm = document.getElementById("search").value;
 
             // AJAX-Anfrage an den Server senden, um Schiffswrack-Daten zu suchen
-            fetch('includes/searchShip_Joe.php?search=' + searchTerm)
+            fetch('Backend/searchShip_Joe.php?search=' + searchTerm)
                 .then(response => response.json())
                 .then(data => {
                     // Container für die Anzeige der Ergebnisse

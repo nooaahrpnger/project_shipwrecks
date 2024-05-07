@@ -1,6 +1,6 @@
 <?php
 require_once "db_credentials.php";
-include_once "FeatureRanking.php";
+include_once "Backend/FeatureRanking.php";
 
 
 if ($result->num_rows > 0) {

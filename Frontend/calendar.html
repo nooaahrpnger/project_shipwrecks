@@ -23,7 +23,7 @@
             events: function(fetchInfo, successCallback, failureCallback) {
                 // Nutzt jQuery, um eine GET-Anfrage zu senden und Ereignisdaten im JSON-Format zu laden.
                 $.ajax({
-                    url: '../Backend/getShipwrecks.php', // Die URL, von der die Daten abgerufen werden.
+                    url: 'Backend/getShipwrecks.php', // Die URL, von der die Daten abgerufen werden.
                     type: 'GET',
                     dataType: 'json',
                     success: function(response) {

@@ -1,8 +1,10 @@
 <?php
-require_once "db_credentials.php";
-include_once "quiz.php";
+require_once "../db_credentials.php";
 
 // Überprüft ob das Formular abgesendet wurde und der Button mit dem Namen DATA_submit vorhanden ist
+
+$_SESSION['user_id'] = 43;
+
 if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['DATA_submit'])) {
     
     // Überprüft ob die Session user_id vorhanden ist
