@@ -1,5 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sunken Ships Quiz</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+<body>
     <h1>Sunken Ships Quiz</h1>
-    <form id="quizForm"  method="post">
+    <form id="quizForm" method="post">
         <h2>Question 1: Which ship, often called "The Ship of Gold", sank in 1857 off the coast of South Carolina?</h2>
         <input type="radio" name="q1" value="A"> A. RMS Titanic<br>
         <input type="radio" name="q1" value="B"> B. USS Monitor<br>
@@ -52,13 +61,36 @@
 
         <input type="submit" name="DATA_submit" value="Finish Quiz">
     </form>
-    <script src="../js/quiz.js"></script>
-
-    <?php
-    include "FeatureInsertPoints.php";
     
-    insertQuizResult($userID,$score);
+    <script>
+        $(document).ready(function() {
+            $("#quizForm").submit(function(event) {
+                event.preventDefault(); 
 
-    ?>
+                const formData = new FormData(this);
+
+                $.ajax({
+                    url: 'insert_quiz_result.php', // Der Dateiname für die Backend-Datei wurde geändert
+                    type: 'POST',
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    dataType: 'json', // Datentyp als JSON festlegen
+                    success: function(response) {
+                        if(response.error) {
+                            alert(response.error); // Fehlermeldung anzeigen
+                        } else {
+                            alert(response.success); // Erfolgsnachricht anzeigen
+                        }
+                    },
+                    error: function(xhr, status, error) {
+                        console.error('Error:', error);
+                    }
+                });
+
+                return false; 
+            });
+        });
+    </script>
 </body>
 </html>
