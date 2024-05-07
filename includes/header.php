@@ -21,8 +21,8 @@
         else
         {
             ?>
-                <li><a href="index.php?page=includes/register.html">Register</a></li>
-                <li><a href="index.php?page=includes/login.html">Login</a></li>
+                <li><a href="index.php?page=includes/register.html"><i class="fa-regular fa-address-card"></i></a></li>
+                <li><a href="index.php?page=includes/login.html"><i class="fa-solid fa-right-to-bracket"></i></a></li>
             <?php
         }
         ?>
