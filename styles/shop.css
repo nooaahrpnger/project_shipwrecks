@@ -36,6 +36,23 @@
     padding: 15px; 
     margin: 10px; 
     cursor: pointer; 
+    transition: transform 0.3s ease; /* Glätten der Übergangsanimation */
+}
+
+.filterIcon:hover {
+    animation: pulse 1s infinite; /* Starten der Pulsieren-Animation beim Hover */
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1); /* Startgröße */
+    }
+    50% {
+        transform: scale(1.2); /* Größere Skalierung */
+    }
+    100% {
+        transform: scale(1); /* Zurück zur Startgröße */
+    }
 }
 
 .product-container {
