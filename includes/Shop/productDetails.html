@@ -95,7 +95,7 @@
                     type: 'POST',
                     data: {id: productId},
                     success: function(response){
-                        
+                        location.reload(true);
                     },
                     error: function(xhr, status, error){
                         console.error(xhr.responseText);

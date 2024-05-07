@@ -24,8 +24,11 @@
         echo '<ul>';
         foreach ($cart as $productId => $quantity) 
         {
-            $query = "SELECT * FROM shipwrecks_Items WHERE idItem = $productId";
-            $result = mysqli_query($dbc, $query);
+            $query = "SELECT * FROM shipwrecks_Items WHERE idItem = ?";
+            $stmt = mysqli_prepare($dbc, $query);
+            mysqli_stmt_bind_param($stmt, "i", $productId);
+            mysqli_stmt_execute($stmt);
+            $result = mysqli_stmt_get_result($stmt);
 
             if ($result && mysqli_num_rows($result) > 0) 
             {

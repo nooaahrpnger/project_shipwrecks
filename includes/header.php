@@ -31,8 +31,15 @@ li
         <li><a href="index.php?page=includes/Shop/shop.html"><i class="fa-solid fa-shop"></i></a></li>
         
         <?php
-        if (isset($_SESSION["LOGIN_user"])) {
-            $cart_count = isset($_SESSION['cart']) ? count($_SESSION['cart']) : 0;
+        if (isset($_SESSION["LOGIN_user"])) 
+        {
+            $cart_count = 0;
+            if (isset($_SESSION['cart'])) {
+                foreach ($_SESSION['cart'] as $productId => $quantity) 
+                {
+                    $cart_count += $quantity;
+                }
+            }
             ?>
             <li><a href="index.php?page=includes/Shop/checkout.php"><i class="fa-solid fa-cart-shopping"></i><span class="cart-count"><?php echo $cart_count; ?></span></a></li>
             <li><a href="index.php?page=includes/logout.php"><i class="fa-solid fa-right-from-bracket"></i></a></li>
