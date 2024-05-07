@@ -1,0 +1,51 @@
+<link rel="stylesheet" href="styles/ranking.css">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Results</title>
+    <script src="js/jquery-3.7.1.js"></script>
+</head>
+<body>
+    <h1>Quiz Results</h1>
+    <table id="leaderboard-table">
+        <thead>
+            <tr>
+                <th>Benutzername</th>
+                <th>Punkte</th>
+            </tr>
+        </thead>
+        <tbody id="quizResults">
+        
+        </tbody>
+    </table>
+
+    <script>
+        $(document).ready(function() {
+            // AJAX-Anfrage zum Abrufen der Quizergebnisse
+            $.ajax({
+                url: 'Backend/backendRanking.php',
+                type: 'POST',
+                dataType: 'json',
+                success: function(data) {
+                    var html = "";
+                    $.each(data, function(index, item) {
+                        html += "<tr>";
+                        html += "<td>" + item.dtUsername + "</td>"; // Benutzername von der datenbank
+                        html += "<td>" + item.dtQuizResults + "</td>"; // Punkte von der Datenbank 
+                        html += "</tr>";
+                    });
+                    // Ergebnisse in die Tabelle einfügen
+                    $('#quizResults').html(html); 
+                },
+                error: function(xhr, status, error) {
+                    // Fehlerbehandlung bei einem Fehler in der AJAX-Anfrage
+                    console.error('Error:', error);
+                    $('#quizResults').html("<tr><td colspan='2'>Ein Fehler ist aufgetreten</td></tr>");
+                }
+            });
+        });
+    </script>
+</body>
+</html>

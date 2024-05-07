@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="js/jquery-3.7.1.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="styles/shop.css">
+    <style>
+        .productContainer {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center; 
+        }
+        .product {
+            width: 23%; 
+            margin: 10px; 
+            text-align: center; 
+        }
+    </style>
+    <title>Document</title>
+</head>
+<body>
+    <h1>Shop</h1>
+
+    <!-- Filter Icons -->
+    
+    <div id="filterIcons">
+        <a href="index.php?page=shop" class="refresh-link"><i class="fas fa-sync-alt filterIcon"></i></a>
+        <i class="fas fa-tshirt filterIcon" data-category="Clothing"></i>           <!-- Clothing Icon -->
+        <i class="fas fa-ship filterIcon" data-category="Ship"></i>                 <!-- Ship Icon -->
+        <i class="fas fa-wine-bottle filterIcon" data-category="Bottled Ship"></i>  <!-- Bottled Ships -->
+    </div>
+
+    <!-- Container für jede Kategorie -->
+    <div class="categoryContainer" id="clothingContainer">
+        <h2>Clothing</h2>
+        <div class="productContainer" id="clothingProducts"></div>
+    </div>
+    <div class="categoryContainer" id="shipContainer">
+        <h2>Ships</h2>
+        <div class="productContainer" id="shipProducts"></div>
+    </div>
+    <div class="categoryContainer" id="bottledShipContainer">
+        <h2>Bottled Ship</h2>
+        <div class="productContainer" id="bottledShipProducts"></div>
+    </div>
+
+    <script>
+        // Anzeigen der Produkte nach Kategorie
+        $(document).ready(function(){
+            $('.filterIcon').click(function(){
+                var category = $(this).data('category');
+                filterProducts(category);
+            });
+
+            // Initial alle Produkte anzeigen
+            showAllProducts();
+        });
+
+        // Funktion um alle Produkte anzuzeigen
+        function showAllProducts() {
+            $.ajax({
+                url: 'Backend/shop.php',
+                type: 'GET',
+                dataType: 'json',
+                success: function(data){
+                    displayProducts(data);
+                },
+                error: function(xhr, status, error){
+                    console.error(xhr.responseText);
+                }
+            });
+        }
+
+        // Funktion um Produkte nach Kategorie zu filtern
+        function filterProducts(category) {
+            $.ajax({
+                url: 'Backend/shop.php?category=' + category,
+                type: 'GET',
+                dataType: 'json',
+                success: function(data){
+                    displayProducts(data);
+                },
+                error: function(xhr, status, error){
+                    console.error(xhr.responseText);
+                }
+            });
+        }
+
+        // Funktion um Produkte anzuzeigen
+        function displayProducts(products) {
+            $('.productContainer').empty(); // Container leeren, um alte Produkte zu entfernen
+            $.each(products, function(index, product){
+                var productHTML = '<div class="product">';
+                productHTML += '<a href="index.php?page=productDetails&id=' + product.idItem + '">';
+                productHTML += '<img src="images/' + product.dtImage + '" alt="' + product.dtItemName + '" style="width:100%;">';
+                productHTML += '</a><br>';
+                productHTML += '<div>' + product.dtItemName + '</div>';
+                productHTML += '<div>$' + product.dtPrice + '</div>';
+                productHTML += '</div>';
+                // Produkt zur entsprechenden Kategorie hinzufügen
+                if (product.dtCategory === 'Clothing') {
+                    $('#clothingProducts').append(productHTML);
+                } else if (product.dtCategory === 'Ship') {
+                    $('#shipProducts').append(productHTML);
+                } else if (product.dtCategory === 'Bottled Ship') {
+                    $('#bottledShipProducts').append(productHTML);
+                }
+            });
+        }
+        
+    </script>
+    
+</body>
+</html>

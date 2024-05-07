@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shipwrecks</title>
+    <link rel="stylesheet" href="styles/lookByCountry.css">
+    <style>
+
+    </style>
+</head>
+<body>
+    <h1>Shipwrecks</h1>
+    <div id="countries"></div>
+
+    <script>
+        // When the document is fully loaded, execute the function inside.
+        $(document).ready(function() {
+            // Perform an AJAX GET request to fetch a list of countries from the server.
+            $.ajax({
+                url: "Backend/get_country.php", // the URL of the server-side script
+                method: "GET", // the HTTP method to use
+                dataType: "json", // expect a JSON response
+                success: function(countries) { // function to execute if request is successful
+                    displayCountries(countries); // display the countries using the displayCountries function
+                },
+                error: function(jqXHR, textStatus, errorThrown) { // function to execute if request fails
+                    console.error('Error fetching country list:', errorThrown); // log the error
+                    alert('Failed to load countries. Please check the console for details.'); // alert the user
+                }
+            });
+    
+            // Function to display each country as a clickable card in the webpage.
+            function displayCountries(countries) {
+                var $countriesDiv = $("#countries"); // jQuery selector for the div where countries will be displayed
+                // Iterate over each country returned from the server.
+                $.each(countries, function(country) {
+                    // Make another AJAX request to fetch flag data from a public API.
+                    $.ajax({
+                        url: `https://restcountries.com/v3.1/name/${encodeURIComponent(country)}?fields=flags`, // URL to fetch data for each country
+                        method: "GET",
+                        dataType: "json",
+                        success: function(countryData) { // function to execute if request is successful
+                            var flagURL = countryData[0] && countryData[0].flags && countryData[0].flags.svg ? 
+                                          countryData[0].flags.svg : "images/White_flag_of_surrender.svg.png"; // determine the flag URL or use a default
+                            // Create a new div for the country using jQuery.
+                            var $countryCard = $("<div>", {
+                                "class": "country-card", // assign CSS class
+                                "css": { // apply CSS styles directly
+                                    "backgroundImage": `url(${flagURL})`,
+                                    "backgroundSize": '100% auto',
+                                    "backgroundPosition": 'center',
+                                    "backgroundRepeat": 'no-repeat'
+                                },
+                                "text": country, // set the text content to the country's name
+                                "click": function() { // set up a click event handler
+                                    window.location.href = `index.php?page=ships&country=${encodeURIComponent(country)}`; // redirect on click
+                                }
+                            });
+    
+                            $countriesDiv.append($countryCard); // append the new div to the countries container
+                        },
+                        error: function(jqXHR, textStatus, errorThrown) { // function to execute if request fails
+                            console.error('Error fetching flag for:', country, errorThrown); // log the error
+                            // Create a default country card with a placeholder image on error.
+                            var $countryCard = $("<div>", {
+                                "class": "country-card",
+                                "css": {
+                                    "backgroundImage": 'url("images/White_flag_of_surrender.svg.png")',
+                                    "backgroundSize": '100% auto',
+                                    "backgroundPosition": 'center',
+                                    "backgroundRepeat": 'no-repeat'
+                                },
+                                "text": country,
+                                "click": function() {
+                                    window.location.href = `index.php?page=ships&country=${encodeURIComponent(country)}`;
+                                }
+                            });
+    
+                            $countriesDiv.append($countryCard); // append the new div to the countries container
+                        }
+                    });
+                });
+            }
+        });
+    </script>
+    
+</body>
+</html>

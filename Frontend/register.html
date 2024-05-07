@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <script src="js/jquery-3.7.1.js"></script>
+    <style>
+        body 
+        {
+        background-color: #f0f0f0; /* light gray background */
+        color: #333; /* dark gray text */
+        }
+
+        #registerForm {
+            max-width: 300px;
+            margin: 40px auto;
+            padding: 20px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        input[type="text"], input[type="password"], input[type="email"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+        }
+
+        .registerButton {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .registerButton:hover {
+            background-color: #444;
+        }
+    </style>
+</head>
+<body>
+    <div id="registerForm">
+        <form id="registerFormInner" method="post" action="Backend/register.php">
+            <label for="SIGNIN_loginName">Login Name:</label>
+            <input type="text" id="SIGNIN_loginName" name="SIGNIN_loginName" placeholder="Login Name" required><br>
+            <label for="SIGNIN_password">Passwort:</label>
+            <input type="password" id="SIGNIN_password" name="SIGNIN_password" placeholder="Passwort" required><br>
+            <label for="SIGNIN_email">Email:</label>
+            <input type="email" id="SIGNIN_email" name="SIGNIN_email" placeholder="Email" required><br>
+
+            <button type="submit" class="registerButton" name="BUTTON_register" id="registerButton">Erstellen</button>
+        </form>
+    </div>
+    <script>
+        $(document).ready(function() {   
+            $("#registerFormInner").submit(function(e) { 
+                e.preventDefault(); 
+    
+                var formData = $(this).serialize();
+    
+                $.ajax({
+                    url: 'Backend/register.php',
+                    type: 'POST',
+                    data: formData,
+                    success: function(response) {
+                        window.location.href = 'index.php';
+                        console.log('Server response:', response);
+                    }
+                });
+            });  
+        });
+    </script>
+</body>
+</html>

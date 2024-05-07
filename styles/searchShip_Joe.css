@@ -1,0 +1,68 @@
+/* Base styles for the search page to avoid interference */
+#shipwreckSearchPage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    background-color: #f7f7f7; /* Slightly different background for visual separation */
+}
+
+#shipwreckSearchPage h1 {
+    color: #333;
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+#shipwreckSearchPage label {
+    margin-bottom: 10px;
+    font-size: 16px;
+    color: #333;
+}
+
+#shipwreckSearchPage input[type="text"] {
+    width: 80%;
+    max-width: 500px;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+#shipwreckSearchPage button {
+    padding: 10px 20px;
+    background-color: #0056b3;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#shipwreckSearchPage button:hover {
+    background-color: #003a78;
+}
+
+#shipwreckSearchPage #shipwrecksContainer {
+    width: 100%;
+    max-width: 800px;
+    margin-top: 20px;
+}
+
+#shipwreckSearchPage #shipwrecksContainer div {
+    background-color: #fff;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+#shipwreckSearchPage #shipwrecksContainer h3 {
+    color: #007bff;
+    margin-bottom: 5px;
+}
+
+#shipwreckSearchPage #shipwrecksContainer p {
+    color: #666;
+    font-size: 14px;
+    line-height: 1.4;
+}
