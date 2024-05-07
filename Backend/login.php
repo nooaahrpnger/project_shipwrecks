@@ -2,7 +2,7 @@
 session_start();
 
 // Verbindung zur Datenbank herstellen
-require_once "db_credentials.php";
+require_once "../db_credentials.php";
 $dbc = mysqli_connect(DB_HOST, DB_USER, DB_PW, DB_NAME);
 
 

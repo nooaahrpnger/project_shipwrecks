@@ -49,7 +49,7 @@
 </head>
 <body>
     <div id="registerForm">
-        <form id="registerFormInner" method="post" action="includes/register.php">
+        <form id="registerFormInner" method="post" action="Backend/register.php">
             <label for="SIGNIN_loginName">Login Name:</label>
             <input type="text" id="SIGNIN_loginName" name="SIGNIN_loginName" placeholder="Login Name" required><br>
             <label for="SIGNIN_password">Passwort:</label>
@@ -68,7 +68,7 @@
                 var formData = $(this).serialize();
     
                 $.ajax({
-                    url: 'includes/register.php',
+                    url: 'Backend/register.php',
                     type: 'POST',
                     data: formData,
                     success: function(response) {

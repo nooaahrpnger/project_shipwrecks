@@ -43,7 +43,7 @@
             }
         }
         echo "Order processed. Total: $$totalAmount";
-        header('Location: ../../index.php');
+        header('Location: ../index.php?page=homepage');
     }
     unset($_SESSION['cart']);
 

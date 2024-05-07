@@ -26,7 +26,7 @@
     <!-- Filter Icons -->
     
     <div id="filterIcons">
-        <a href="index.php?page=includes/Shop/shop.html" class="refresh-link"><i class="fas fa-sync-alt filterIcon"></i></a>
+        <a href="index.php?page=shop" class="refresh-link"><i class="fas fa-sync-alt filterIcon"></i></a>
         <i class="fas fa-tshirt filterIcon" data-category="Clothing"></i>           <!-- Clothing Icon -->
         <i class="fas fa-ship filterIcon" data-category="Ship"></i>                 <!-- Ship Icon -->
         <i class="fas fa-wine-bottle filterIcon" data-category="Bottled Ship"></i>  <!-- Bottled Ships -->
@@ -61,7 +61,7 @@
         // Funktion um alle Produkte anzuzeigen
         function showAllProducts() {
             $.ajax({
-                url: 'includes/Shop/shop.php',
+                url: 'Backend/shop.php',
                 type: 'GET',
                 dataType: 'json',
                 success: function(data){
@@ -76,7 +76,7 @@
         // Funktion um Produkte nach Kategorie zu filtern
         function filterProducts(category) {
             $.ajax({
-                url: 'includes/Shop/shop.php?category=' + category,
+                url: 'Backend/shop.php?category=' + category,
                 type: 'GET',
                 dataType: 'json',
                 success: function(data){
@@ -93,8 +93,8 @@
             $('.productContainer').empty(); // Container leeren, um alte Produkte zu entfernen
             $.each(products, function(index, product){
                 var productHTML = '<div class="product">';
-                productHTML += '<a href="index.php?page=includes/Shop/productDetails.html&id=' + product.idItem + '">';
-                productHTML += '<img src="includes/Shop/images/' + product.dtImage + '" alt="' + product.dtItemName + '" style="width:100%;">';
+                productHTML += '<a href="index.php?page=productDetails&id=' + product.idItem + '">';
+                productHTML += '<img src="images/' + product.dtImage + '" alt="' + product.dtItemName + '" style="width:100%;">';
                 productHTML += '</a><br>';
                 productHTML += '<div>' + product.dtItemName + '</div>';
                 productHTML += '<div>$' + product.dtPrice + '</div>';

@@ -55,7 +55,7 @@
     <script src="../js/quiz.js"></script>
 
     <?php
-    include "FeatureInsertPoints.php";
+    include "Backend/FeatureInsertPoints.php";
     
     
 

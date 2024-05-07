@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <div class="logo">
     <h1>Shipwrecks</h1>
 </div>
@@ -26,12 +29,13 @@ li
 <nav>
     <ul>
         <li><a href="index.php?page=homepage"><i class="fa-solid fa-house"></i></a></li>
-        <li><a href="index.php?page=quizRanking"><i class="fa-solid fa-book"></i></a></li>
+        <li><a href="index.php?page=quizRanking"><i class="fa-solid fa-ranking-star"></i></a></li>
         <li><a href="index.php?page=statics"><i class="fa-solid fa-chart-simple"></i></a></li>
         <li><a href="index.php?page=calendar"><i class="fa-solid fa-calendar"></i></a></li>
-        <li><a href="index.php?page=editUser_Joe"><i class="fa-solid fa-user"></i></a></li>
+        <li><a href="index.php?page=country"><i class="fa-solid fa-anchor"></i></a></li>
+        <li><a href="index.php?page=quiz"><i class="fa-solid fa-question"></i></a></li>
         <li><a href="index.php?page=searchShip_Joe"><i class="fa-solid fa-magnifying-glass"></i></a></li>
-        <li><a href="index.php?page=Shop/shop"><i class="fa-solid fa-shop"></i></a></li>
+        <li><a href="index.php?page=shop"><i class="fa-solid fa-shop"></i></a></li>
         
         <?php
         if (isset($_SESSION["LOGIN_user"])) 
@@ -44,14 +48,15 @@ li
                 }
             }
             ?>
-            <li><a href="index.php?page=includes/Shop/checkout.php"><i class="fa-solid fa-cart-shopping"></i><span class="cart-count"><?php echo $cart_count; ?></span></a></li>
-            <li><a href="index.php?page=includes/logout.php"><i class="fa-solid fa-right-from-bracket"></i></a></li>
+            <li><a href="index.php?page=checkout"><i class="fa-solid fa-cart-shopping"></i><span class="cart-count"><?php echo $cart_count; ?></span></a></li>
+            <li><a href="index.php?page=editUser_Joe"><i class="fa-solid fa-user"></i></a></li>
+            <li><a href="index.php?page=logout"><i class="fa-solid fa-right-from-bracket"></i></a></li>
             <li><?php echo $_SESSION["LOGIN_user"]; ?></li>
             <?php
         } else {
             ?>
-                <li><a href="index.php?page=includes/register.html"><i class="fa-regular fa-address-card"></i></a></li>
-                <li><a href="index.php?page=includes/login.html"><i class="fa-solid fa-right-to-bracket"></i></a></li>
+                <li><a href="index.php?page=register"><i class="fa-regular fa-address-card"></i></a></li>
+                <li><a href="index.php?page=login"><i class="fa-solid fa-right-to-bracket"></i></a></li>
             <?php
         }
         ?>

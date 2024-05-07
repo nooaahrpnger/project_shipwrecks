@@ -37,7 +37,7 @@
 
             // AJAX-Anfrage an das Backend senden, um die Produktinformationen abzurufen
             $.ajax({
-                url: 'includes/Shop/productDetails.php',
+                url: 'Backend/productDetails.php',
                 type: 'GET',
                 data: {id: productId},
                 dataType: 'html',
@@ -60,7 +60,7 @@
             $(document).ready(function(){
                 var productId = getParameterByName('id');
                 if (productId) {
-                    $.get('includes/Shop/productDetails.php', {id: productId}, function(data){
+                    $.get('Backend/productDetails.php', {id: productId}, function(data){
                         // Daten erfolgreich abgerufen
                         $('#productDetails').html(data); // Daten in die HTML-Div einfügen
                     }).fail(function(xhr, status, error){
@@ -91,7 +91,7 @@
 
             $('#productDetails').on('click', '.add-to-cart-button', function() {
                 $.ajax({
-                    url: 'includes/Shop/addToCart.php',
+                    url: 'Backend/addToCart.php',
                     type: 'POST',
                     data: {id: productId},
                     success: function(response) {

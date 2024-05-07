@@ -72,7 +72,7 @@
           }
 
           var xhr = new XMLHttpRequest();
-          xhr.open('POST', 'includes/Shop/updateCart.php', true);
+          xhr.open('POST', 'Backend/updateCart.php', true);
           xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
           xhr.send('productId=' + productId + '&quantity=' + qtySpan.textContent);
 
@@ -94,7 +94,7 @@
 </head>
 <body>
 <?php
-    require_once "includes/db_credentials.php";
+    require_once "db_credentials.php";
     $dbc = mysqli_connect(DB_HOST, DB_USER, DB_PW, DB_NAME);
     if (!$dbc) {
         die("Connection failed: " . mysqli_connect_error());
@@ -116,7 +116,7 @@
             if ($result && mysqli_num_rows($result) > 0) {
                 $item = mysqli_fetch_assoc($result);
                 echo '<li>';
-                echo '<img src="includes/Shop/images/' . $item['dtImage'] . '" alt="' . $item['dtItemName'] . '" class="cart-item-image">';
+                echo '<img src="images/' . $item['dtImage'] . '" alt="' . $item['dtItemName'] . '" class="cart-item-image">';
                 echo '<p>Item: ' . $item['dtItemName'] . '</p>';
                 echo '<p>Quantity: ';
                 echo '<button type="button" class="qty-btn" data-product-id="'.$productId.'" data-action="minus"><i class="fa-solid fa-minus"></i></button>';
@@ -127,7 +127,7 @@
             }
         }
         echo '</ul>';
-        echo '<form action="includes/Shop/orderProcess.php" method="POST">';
+        echo '<form action="Backend/orderProcess.php" method="POST">';
         echo '<button type="submit" class="save-button">Purchase</button>';
         echo '<button id="save-button" type="button">Save</button>';
         echo '</form>';

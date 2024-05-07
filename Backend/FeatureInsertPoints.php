@@ -1,15 +1,13 @@
 <?php
-require_once "../db_credentials.php";
+require_once "db_credentials.php";
 
 // Überprüft ob das Formular abgesendet wurde und der Button mit dem Namen DATA_submit vorhanden ist
-
-$_SESSION['user_id'] = 43;
 
 if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['DATA_submit'])) {
     
     // Überprüft ob die Session user_id vorhanden ist
-    if(isset($_SESSION['user_id'])) {
-        $userID = $_SESSION['user_id']; 
+    if(isset($_SESSION['userID'])) {
+        $userID = $_SESSION['userID']; 
     } else {
         echo "User konnte nicht gefunden werden. Bitte loggen Sie sich ein.";  // Wenn nicht, soll man einem sagen das kein User gefunden wurde
     }

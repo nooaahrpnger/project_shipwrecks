@@ -1,11 +1,9 @@
 <?php
 session_start();
 
-$_SESSION['idUser'] = 31 ;
 
 
-
-require_once 'db_credentials.php';
+require_once '../db_credentials.php';
 
 $conn = new mysqli(DB_HOST, DB_USER, DB_PW, DB_NAME);
 
@@ -16,7 +14,7 @@ if ($conn->connect_error) {
     die("Verbindung fehlgeschlagen: " . $conn->connect_error);
 }
 
-if (!isset($_SESSION['idUser'])) {
+if (!isset($_SESSION['userID'])) {
     // Wenn keine Benutzer-ID in der Session vorhanden ist, Skriptausführung stoppen und Fehlermeldung ausgeben
     die("Benutzer nicht eingeloggt");
 }
@@ -31,7 +29,7 @@ try {
         $hash = password_hash($_POST['dtPassword'] , PASSWORD_DEFAULT);
 
         // Parameter an die SQL-Abfrage binden
-        $stmt->bind_param("sssi", $_POST['dtUsername'], $_POST['dtEmail'], $hash, $_SESSION['idUser']);
+        $stmt->bind_param("sssi", $_POST['dtUsername'], $_POST['dtEmail'], $hash, $_SESSION['userID']);
 
         // SQL-Abfrage ausführen
         $stmt->execute();
@@ -46,7 +44,7 @@ try {
         $stmt = $conn->prepare($sql);
 
         // Parameter an die SQL-Abfrage binden
-        $stmt->bind_param("i", $_SESSION['idUser']);
+        $stmt->bind_param("i", $_SESSION['userID']);
 
         // SQL-Abfrage ausführen
         $stmt->execute();

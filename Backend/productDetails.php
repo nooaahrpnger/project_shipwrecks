@@ -23,7 +23,7 @@
             echo '<div class="product-container">';
                 echo '<div class="product-image-container">';
                 // Kleineres Bild mit Animation
-                echo '<img src="includes/Shop/images/' . $row['dtImage'] . '" alt="' . $row['dtItemName'] . '" class="product-image" style="max-width: 50%; height: auto; animation: fadeIn 0.5s ease;">';
+                echo '<img src="images/' . $row['dtImage'] . '" alt="' . $row['dtItemName'] . '" class="product-image" style="max-width: 50%; height: auto; animation: fadeIn 0.5s ease;">';
                 echo '</div>';
                 echo '<div class="product-info">';
                 echo '<p class="product-name">' . $row['dtItemName'] . '</p>';
@@ -38,7 +38,7 @@
             echo "<div>";
                 if ($row['dtCategory'] === 'Clothing') {
                     echo "<div>";
-                    echo '<img src="includes/Shop/images/sizechart.jpg" alt="Size Chart" class="size-chart" class="sizechart-image">';
+                    echo '<img src="images/sizechart.jpg" alt="Size Chart" class="size-chart" class="sizechart-image">';
                     echo "</div>";
                 }
             echo "</div>";
