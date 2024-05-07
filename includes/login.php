@@ -22,7 +22,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $username = $_POST['INPUT_username'];
         
         // Passwort aus der Datenbank abrufen, basierend auf dem Benutzernamen
-        $queryLogin = "SELECT dtUsername, dtPassword FROM `shipwrecks_Users` WHERE dtUsername = '$username'";
+        $queryLogin = "SELECT dtUsername, dtPassword, idUser FROM `shipwrecks_Users` WHERE dtUsername = '$username'";
         $result = mysqli_query($dbc, $queryLogin);
 
         if (mysqli_num_rows($result) == 1) {
@@ -34,7 +34,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             if (password_verify($_POST['INPUT_password'], $hashed_password)) {
                 // Anmeldung erfolgreich
                 $_SESSION["LOGIN_user"] = $_POST["INPUT_username"];
-                echo "Eingeloggt als: " . $_SESSION["LOGIN_user"];
+                echo "Eingeloggt als: " . $_SESSION["LOGIN_user"];  
                 
                 // Führe hier weitere Aktionen durch, z.B. Setzen von Sitzungsvariablen oder Weiterleiten zu einer anderen Seite
             } else {
