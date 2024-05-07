@@ -118,7 +118,7 @@
     // Lädt Daten asynchron und rendert dann Diagramme basierend auf diesen Daten.
     function fetchDataAndRenderCharts() {
         $.ajax({
-            url: '../Backend/stats_api.php',  // URL der API, die aufgerufen wird.
+            url: 'Backend/stats_api.php',  // URL der API, die aufgerufen wird.
             method: 'GET',  // HTTP-Methode, die verwendet wird.
             dataType: 'json',  // Erwartetes Format der Antwort.
             success: function(data) {

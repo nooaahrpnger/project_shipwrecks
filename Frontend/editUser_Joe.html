@@ -22,7 +22,7 @@
     <script>
     $(document).ready(function() {
         // Beim Laden der Seite Daten über AJAX abrufen
-        $.getJSON('Includes/editUser_Joe.php', function(data) {
+        $.getJSON('Backend/editUser_Joe.php', function(data) {
             if(data.error) {
                 // Wenn ein Fehler auftritt, Fehlermeldung anzeigen
                 alert(data.error);
@@ -46,7 +46,7 @@
     
             // AJAX-Anfrage zum Aktualisieren der Benutzerdaten
             $.ajax({
-                url: 'includes/editUser_Joe.php',
+                url: 'Backend/editUser_Joe.php',
                 type: 'POST',
                 data: formData,
                 success: function(data) {
