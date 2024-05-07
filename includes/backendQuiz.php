@@ -1,8 +1,3 @@
-/**
-* @author Jean-Luc Nwari <ntwje237@school.lu>
-
-*/ 
-
 <?php
 require_once "db_credentials.php";
 
