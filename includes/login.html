@@ -73,6 +73,7 @@
           url: 'includes/login.php', // Die URL deiner PHP-Seite hier einfügen
           data: formData,
           success: function(response) {
+            window.location.href = 'index.php';
             // Erfolgreiche Verarbeitung der Antwort von PHP
             console.log(response); // Hier kannst du die Antwort protokollieren oder weitere Aktionen durchführen
           },

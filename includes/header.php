@@ -7,11 +7,12 @@
         <li><a href="index.php?page=includes/quiz.html">Quiz</a></li>
         <li><a href="index.php?page=includes/searchShip.html">Search</a></li>
         <li><a href="index.php?page=includes/Shop/shop.html">Shop</a></li>
-        <li><a href="index.php?page=includes/Shop/checkout.php">Cart</a></li>
+        
         <?php
         if(isset($_SESSION["LOGIN_user"]))
         {
             ?>
+            <li><a href="index.php?page=includes/Shop/checkout.php">Cart</a></li>
             <li><a href="index.php?page=includes/logout.php">Logout</a></li>
             <?php
         }
