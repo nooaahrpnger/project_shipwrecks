@@ -1,6 +1,3 @@
-<?php
-    session_start();
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,31 +5,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shipwrecks</title>
     <link rel="stylesheet" href="styles/style.css">
+    <script src="js/jquery-3.7.1.js"></script>
 </head>
 <body>
 <header>
-    <?php include("includes/header.php"); ?>
+    <?php include("Frontend/header.php"); ?>
 </header>
 <main>
     <div class="container">
         <?php
         if (isset($_GET['page']) && !empty($_GET['page'])) {
-            $file =  $_GET['page'];
-            if(file_exists($file)) {
-                include($file);
+            $htmlFile =  "Frontend/" . $_GET['page'] . ".html";
+            $phpFile =  "Frontend/" . $_GET['page'] . ".php";
+
+            if (file_exists($htmlFile)) {
+                include($htmlFile);
+            } elseif (file_exists($phpFile)) {
+                include($phpFile);
             } else {
-                echo "<p>Page not found</p>";
+                echo "<p>Page not found.</p>";
             }
         } else {
-            include("includes/homepage.php");
+            include("Frontend/homepage.php");
         }
         ?>
     </div>
 </main>
 <footer>
-    <?php include("includes/footer.php"); ?>
+    <?php include("Frontend/footer.php"); ?>
 </footer>
 
 </body>
-
 </html>

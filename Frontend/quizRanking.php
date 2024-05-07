@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="styles/ranking.css">
 <?php
 require_once "db_credentials.php";
 include_once "Backend/FeatureRanking.php";
