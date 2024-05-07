@@ -14,6 +14,8 @@
 
     $cart = isset($_SESSION['cart']) ? $_SESSION['cart'] : [];
 
+    $fiUser = $_SESSION["userID"];
+    
     if (!empty($cart)) 
     {
         $totalAmount = 0;
@@ -36,7 +38,7 @@
                 $updateStock = "UPDATE shipwrecks_Items SET dtStockQuantity = $newStock WHERE idItem = $productId";
                 mysqli_query($dbc, $updateStock);
 
-                $orderInsert = "INSERT INTO shipwrecks_Orders ( itemID, dtQuantity, dtTotalPrice) VALUES ( $productId, $quantity, $subtotal)";
+                $orderInsert = "INSERT INTO shipwrecks_Orders ( itemID, dtQuantity, dtTotalPrice, fiUser) VALUES ( $productId, $quantity, $subtotal, $fiUser)";
                 mysqli_query($dbc, $orderInsert);
             }
         }
