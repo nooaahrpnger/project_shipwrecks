@@ -8,7 +8,6 @@
 </head>
 <body>
 <?php
-    session_start();
     require_once "includes/db_credentials.php";
     $dbc = mysqli_connect(DB_HOST, DB_USER, DB_PW, DB_NAME);
     if (!$dbc)

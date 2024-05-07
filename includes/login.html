@@ -1,52 +1,90 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="js/jquery-3.7.1.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="js/jquery-3.7.1.js"></script>
+  <title>Login</title>
+  <style>
+    body {
+      background-color: #f0f0f0; /* light gray background */
+      color: #333; /* dark gray text */
+    }
 
-    <title>Login</title>
-    
+    #loginForm {
+      max-width: 300px;
+      margin: 40px auto;
+      padding: 20px;
+      background-color: #fff;
+      border: 1px solid #ddd;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    label {
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    input[type="text"], input[type="password"], input[type="email"] {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+    }
+
+    .loginButton {
+      background-color: #333;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .loginButton:hover {
+      background-color: #444;
+    }
+  </style>
 </head>
 <body>
-    <!-- Login Form -->
-    <div id="loginBox">
-        <h1>Login</h1>
-        <form method="post">
-            <label class="blackText">Username:</label><br>
-            <input type="text" name="INPUT_username" ><br><br>
-            <label class="blackText">Passwort:</label><br>
-            <input type="password" name="INPUT_password" id="loginPass"><br>
-            <br><br>
-            <button class="loginB" type='submit' name='BUTTON_login'>Login</button>
-            <br><br>
-        </form>
-    </div>
+  <main>
+    <section id="loginBox">
+      <h1>Login</h1>
+      <form id="loginForm" method="post">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="INPUT_username"><br><br>
+        <label for="password">Passwort:</label>
+        <input type="password" id="password" name="INPUT_password"><br>
+        <br><br>
+        <button class="loginButton" type="submit" name="BUTTON_login">Login</button>
+        <br><br>
+      </form>
+    </section>
     <hr>
     <!-- Sign in Form -->
-    
-    <script>
-        $(document).ready(function(){
-            $('form').submit(function(event) {
-                event.preventDefault(); // Verhindert das Standardverhalten des Formulars (das automatische Absenden)
+  </main>
+  <script>
+    $(document).ready(function(){
+      $('#loginForm').submit(function(event) {
+        event.preventDefault(); // Verhindert das Standardverhalten des Formulars (das automatische Absenden)
 
-                var formData = $(this).serialize(); // Daten aus dem Formular serialisieren
+        var formData = $(this).serialize(); // Daten aus dem Formular serialisieren
 
-                $.ajax({
-                    type: 'POST',
-                    url: 'includes/login.php', // Die URL deiner PHP-Seite hier einfügen
-                    data: formData,
-                    success: function(response) {
-                        // Erfolgreiche Verarbeitung der Antwort von PHP
-                        console.log(response); // Hier kannst du die Antwort protokollieren oder weitere Aktionen durchführen
-                    },
-                    error: function(xhr, status, error) {
-                        // Fehler bei der AJAX-Anfrage
-                        console.error(error); // Protokollieren des Fehlers
-                    }
-                });
-            });
+        $.ajax({
+          type: 'POST',
+          url: 'includes/login.php', // Die URL deiner PHP-Seite hier einfügen
+          data: formData,
+          success: function(response) {
+            // Erfolgreiche Verarbeitung der Antwort von PHP
+            console.log(response); // Hier kannst du die Antwort protokollieren oder weitere Aktionen durchführen
+          },
+          error: function(xhr, status, error) {
+            // Fehler bei der AJAX-Anfrage
+            console.error(error); // Protokollieren des Fehlers
+          }
         });
-    </script>
+      });
+    });
+  </script>
 </body>
 </html>
