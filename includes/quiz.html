@@ -1,10 +1,16 @@
+/**
+* @author Jean-Luc Nwari <ntwje237@school.lu>
+
+*/ 
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sunken Ships Quiz</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+   
 </head>
 <body>
     <h1>Sunken Ships Quiz</h1>
@@ -65,32 +71,35 @@
     <script>
         $(document).ready(function() {
             $("#quizForm").submit(function(event) {
-                event.preventDefault(); 
+                event.preventDefault(); // Verhindern die Standardformularabsendung 
 
+                // Die Daten des Formulars werden in ein FormData-Objekt gepackt
                 const formData = new FormData(this);
 
+                // AJAX-Anfrage zum Senden der Daten an das Backend
                 $.ajax({
-                    url: 'insert_quiz_result.php', // Der Dateiname für die Backend-Datei wurde geändert
-                    type: 'POST',
-                    data: formData,
-                    processData: false,
-                    contentType: false,
-                    dataType: 'json', // Datentyp als JSON festlegen
-                    success: function(response) {
+                    url: 'includes/backendQuiz.php', // URL des Backend-Skripts
+                    type: 'POST', // POST-Methode verwenden
+                    data: formData, // Die Formulardaten senden
+                    processData: false, // Daten nicht verarbeiten (für FormData erforderlich)
+                    contentType: false, // Inhaltstyp nicht festlegen (für FormData erforderlich)
+                    dataType: 'json', // Erwarteter Datentyp der Antwort
+                    success: function(response) { // Erfolgsfall
                         if(response.error) {
-                            alert(response.error); // Fehlermeldung anzeigen
+                            alert(response.error); // Fehlermeldung 
                         } else {
                             alert(response.success); // Erfolgsnachricht anzeigen
                         }
                     },
-                    error: function(xhr, status, error) {
-                        console.error('Error:', error);
+                    error: function(xhr, status, error) { // Für den Fehlerfall
+                        console.error('Error:', error); // gibt fehler in der Konsole aus
                     }
                 });
 
-                return false; 
+                return false; // Das Formular wird nicht abgeschickt
             });
         });
+
     </script>
 </body>
 </html>
