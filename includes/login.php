@@ -36,7 +36,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $_SESSION["LOGIN_user"] = $_POST["INPUT_username"];
                 $_SESSION["userID"] = $row["idUser"];
                 echo "Eingeloggt als: " . $_SESSION["LOGIN_user"];  
-                
                 // Führe hier weitere Aktionen durch, z.B. Setzen von Sitzungsvariablen oder Weiterleiten zu einer anderen Seite
             } else {
                 // Anmeldung fehlgeschlagen
@@ -54,7 +53,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Fehler: Das Formular wurde nicht über POST-Methode gesendet
     echo "Fehler: Das Formular wurde nicht korrekt gesendet.";
 }
-
 // Verbindung zur Datenbank schließen
 mysqli_close($dbc);
 ?>

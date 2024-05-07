@@ -24,7 +24,7 @@
                 echo "<p>Page not found</p>";
             }
         } else {
-            include("includes/hompage.php");
+            include("includes/homepage.php");
         }
         ?>
     </div>
