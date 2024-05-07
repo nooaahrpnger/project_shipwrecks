@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>Shipwreck Edit</title>
+    <meta name="author" content="Kohnen Joé">
+    <script src="js/jquery-3.7.1.js"></script>
+    <link rel="stylesheet" href="styles\editUser_Joe.css">
+</head>
+<body>
+    <h1>Benutzerdaten bearbeiten</h1>
+    <!-- Formular zum Bearbeiten der Benutzerdaten -->
+    <form id="editForm">
+        <label for="username">Benutzername:</label>
+            <input type="text" id="username" name="dtUsername" required>
+        <label for="email">Email:</label>
+            <input type="email" id="email" name="dtEmail" required>
+        <label for="password">Passwort:</label>
+            <input type="password" id="password" name="dtPassword" required>
+        <input type="submit" value="Aktualisieren">
+    </form>
+    <script>
+    $(document).ready(function() {
+        // Beim Laden der Seite Daten über AJAX abrufen
+        $.getJSON('Includes/editUser_Joe.php', function(data) {
+            if(data.error) {
+                // Wenn ein Fehler auftritt, Fehlermeldung anzeigen
+                alert(data.error);
+            } else {
+                // Wenn keine Fehler auftreten, Daten in die Formularfelder eintragen
+                $('#username').val(data.dtUsername);
+                $('#email').val(data.dtEmail);
+            }
+        });
+    
+        // Event-Handler für das Absenden des Formulars
+        $('#editForm').submit(function(event) {
+            // Standardaktion des Formulars unterbinden
+            event.preventDefault();
+            // Formulardaten erfassen
+            var formData = {
+                dtUsername: $('#username').val(),
+                dtEmail: $('#email').val(),
+                dtPassword: $('#password').val()
+            };
+    
+            // AJAX-Anfrage zum Aktualisieren der Benutzerdaten
+            $.ajax({
+                url: 'includes/editUser_Joe.php',
+                type: 'POST',
+                data: formData,
+                success: function(data) {
+                    // Bei erfolgreicher Antwort Meldung anzeigen
+                    var response = JSON.parse(data);
+                    if(response.success) {
+                        // Bei Erfolgsmeldung anzeigen
+                        alert(response.success);
+                    } else {
+                        // Bei Fehlermeldung anzeigen
+                        alert(response.error);
+                    }
+                },
+                error: function() {
+                    // Bei Fehler in der Anfrage allgemeine Fehlermeldung anzeigen
+                    alert('Fehler bei der Anfrage.');
+                }
+            });
+        });
+    });
+    </script>
+</body>
+</html>
