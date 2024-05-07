@@ -34,6 +34,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             if (password_verify($_POST['INPUT_password'], $hashed_password)) {
                 // Anmeldung erfolgreich
                 $_SESSION["LOGIN_user"] = $_POST["INPUT_username"];
+                $_SESSION["userID"] = $row["idUser"];
                 echo "Eingeloggt als: " . $_SESSION["LOGIN_user"];  
                 
                 // Führe hier weitere Aktionen durch, z.B. Setzen von Sitzungsvariablen oder Weiterleiten zu einer anderen Seite
