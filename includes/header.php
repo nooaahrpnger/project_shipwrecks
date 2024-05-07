@@ -15,7 +15,7 @@
             ?>
             <li><a href="index.php?page=includes/Shop/checkout.php"><i class="fa-solid fa-cart-shopping"></i></a></li>
             <li><a href="index.php?page=includes/logout.php"><i class="fa-solid fa-right-from-bracket"></i></a></li>
-            <li> <?php $_SESSION["LOGIN_user"] ?> </li>
+            <li> <?php echo $_SESSION["LOGIN_user"] ?> </li>
             <?php
         }
         else
