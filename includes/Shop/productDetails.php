@@ -23,7 +23,7 @@
             echo '<div class="product-container">';
                 echo '<div class="product-image-container">';
                 // Kleineres Bild mit Animation
-                echo '<img src="includes/Shop/images/' . $row['dtImage'] . '" alt="' . $row['dtItemName'] . '" class="product-image" style="max-width: 70%; height: auto; animation: fadeIn 0.5s ease;">';
+                echo '<img src="includes/Shop/images/' . $row['dtImage'] . '" alt="' . $row['dtItemName'] . '" class="product-image" style="max-width: 50%; height: auto; animation: fadeIn 0.5s ease;">';
                 echo '</div>';
                 echo '<div class="product-info">';
                 echo '<p class="product-name">' . $row['dtItemName'] . '</p>';
