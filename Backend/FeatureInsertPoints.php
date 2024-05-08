@@ -1,4 +1,13 @@
+
 <?php
+/* Jean Luc */
+
+
+
+
+
+
+
 require_once "db_credentials.php";
 
 // Überprüft ob das Formular abgesendet wurde und der Button mit dem Namen DATA_submit vorhanden ist

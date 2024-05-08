@@ -1,3 +1,4 @@
+<!-- Xavier Hoffmann -->
 <?php
 
 session_destroy();

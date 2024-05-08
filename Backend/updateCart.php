@@ -1,4 +1,12 @@
 <?php
+/* Xavier Hoffmann */
+
+
+
+
+
+
+
 session_start();
 
 $productId = $_POST['productId'];

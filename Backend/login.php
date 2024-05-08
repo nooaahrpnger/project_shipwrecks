@@ -1,4 +1,10 @@
 <?php
+/* Thierry Cecchini */
+
+
+
+
+
 session_start();
 
 // Verbindung zur Datenbank herstellen

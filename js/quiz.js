@@ -1,3 +1,10 @@
+/* Jean Luc */
+
+
+
+
+
+
 document.getElementById('quizForm').onsubmit = function() {
     const formData = new FormData(this);
 

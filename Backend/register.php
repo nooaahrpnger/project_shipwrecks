@@ -1,4 +1,10 @@
 <?php
+/* Xavier Hoffmann */
+
+
+
+
+
     if ($_SERVER["REQUEST_METHOD"] == "POST") 
     {
         $loginName = $_POST['SIGNIN_loginName'];

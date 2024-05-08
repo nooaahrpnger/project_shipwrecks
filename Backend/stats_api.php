@@ -1,5 +1,11 @@
 <?php
-    //Galafate Mika
+/*  Mika Galafate */
+
+
+
+
+
+
 
     // Setzt den Content-Type auf application/json, um sicherzustellen, dass die Daten korrekt verarbeitet werden
     header('Content-Type: application/json');

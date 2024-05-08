@@ -1,5 +1,15 @@
 <?php
-    //Galafate Mika
+    /* Galafate Mika */
+
+
+
+
+
+
+
+
+
+
     
     // Fehlerberichterstattung aktivieren, um alle Fehler anzuzeigen
     error_reporting(E_ALL);

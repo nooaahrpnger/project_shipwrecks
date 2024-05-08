@@ -1,4 +1,11 @@
 <?php
+/* Rippinger Noah */
+
+
+
+
+
+
 // Simulating content fetching from a database or configuration file
 $siteContent = [
     'title' => 'Welcome to Our Shipwreck Research Hub',

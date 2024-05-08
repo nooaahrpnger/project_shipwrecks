@@ -1,4 +1,11 @@
 <?php
+/* Thierry Cecchini  */
+
+
+
+
+
+
     define("DB_HOST","92.42.47.76");
     define("DB_USER","webap_project");
     define("DB_PW","webap_123");

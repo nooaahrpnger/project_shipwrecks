@@ -1,4 +1,10 @@
 <?php
+/* Xavier Hoffmann */
+
+
+
+
+
     session_start();
 
     define("DB_HOST", "92.42.47.76");
